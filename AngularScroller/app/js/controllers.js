@@ -3,9 +3,9 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('MenuCtrl', [function($scope) {
+  controller('MenuCtrl', ['$scope', function($scope) {
     $scope.test = "menu bitches";
   }])
-  .controller('GameCtrl', [function($scope) {
+  .controller('GameCtrl', ['$scope', function($scope) {
     $scope.test = "game bitches";
   }]);
