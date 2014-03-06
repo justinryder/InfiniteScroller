@@ -38,6 +38,6 @@ angular.module('myApp.services', []).
       {image:'img/obstacle2.jpg', size:{width:64, height:64}},
       {image:'img/obstacle3.png', size:{width:64, height:64}}
     ],
-    obstacleSpeeds:[10, 25, 50, 75, 100, 125, 150],
+    crawlSpeed:100,
     obstacleSpawnRates:[100, 150, 200, 300, 400, 500, 1000, 1500, 2000]
   });

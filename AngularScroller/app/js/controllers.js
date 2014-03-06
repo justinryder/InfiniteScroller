@@ -14,6 +14,7 @@ angular.module('myApp.controllers', ['myApp.services']).
 
     /* BABY */
     $scope.babyImage = Resources.images.babies[0];
+    $scope.babyPosition = {x:0,y:636};
     $scope.moveBaby = function($event) {
         var minX = 104;
         var maxX = 696;
@@ -37,8 +38,8 @@ angular.module('myApp.controllers', ['myApp.services']).
       var resourceObstacle = RandomItem(Resources.obstacles);
       var obstacle = new Obstacle(
         resourceObstacle,
-        {x:Random(Resources.gameScreenSize.width), y:0},
-        RandomItem(Resources.obstacleSpeeds));
+        {x:Random(Resources.gameScreenSize.width), y:-resourceObstacle.size.height},
+        Resources.crawlSpeed);
       $scope.obstacles.push(obstacle);
     };
 
@@ -58,6 +59,11 @@ angular.module('myApp.controllers', ['myApp.services']).
       $scope.$apply(function(){
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(Resources.gameSpeed / 1000);
+
+          if (AreColliding(obstacle.position, $scope.babyPosition)){
+            alert('YOU HAVE FUCKED UP NOW!')
+          }
+
           if (obstacle.position.y > Resources.gameScreenSize.height){
             $scope.obstacles.splice($scope.obstacles.indexOf(obstacle), 1);
           }
@@ -75,6 +81,10 @@ angular.module('myApp.controllers', ['myApp.services']).
   .controller('CreditsCtrl', ['$scope', 'Resources', function($scope, Resources){
     $scope.credits = Resources.text.credits;
   }]);
+
+function AreColliding(pos1, pos2){
+  return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 64;
+}
 
 function RandomItem(arr){
   return arr[Random(arr.length)];
