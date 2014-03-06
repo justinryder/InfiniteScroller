@@ -42,25 +42,24 @@
   height: 800px;
 }
 
-.leftAisle {
+.aisle {
   position: inherit;
-  float: left;
   border: solid blue;
   width: 100px;
   height: 700px;
 }
 
-.rightAisle {
-  position: inherit;
+.aisle#left {
+  float: left;
+}
+
+.aisle#right {
   float: right;
-  border: solid blue;
-  width: 100px;
-  height: 700px;
 }
 
 .gamePlayArea {
   position: inherit;
-  border: solid black;
+  border: solid purple;
   width: 600px;
   height: 700px;
 }
