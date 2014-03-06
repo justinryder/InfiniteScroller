@@ -9,6 +9,9 @@ angular.module('myApp.controllers', ['myApp.services']).
   }])
 
   .controller('GameCtrl', ['$scope', '$document', 'Resources', function($scope, $document, Resources) {
+    /* SCORE */
+    $scope.score = 0;
+
     /* BABY */
     $scope.babyImage = Resources.images.babies[0];
     $scope.moveBaby = function($event) {
@@ -56,6 +59,8 @@ angular.module('myApp.controllers', ['myApp.services']).
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(Resources.gameSpeed / 1000);
         });
+
+        $scope.score += Resources.scoreSpeed;
       })
     }, Resources.gameSpeed);
   }])
