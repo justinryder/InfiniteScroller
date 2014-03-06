@@ -37,7 +37,7 @@ angular.module('myApp.controllers', ['myApp.services']).
       var resourceObstacle = RandomItem(Resources.obstacles);
       var obstacle = new Obstacle(
         resourceObstacle,
-        {x:Math.floor((Math.random()*Resources.gameScreenSize.width)), y:0},
+        {x:Random(Resources.gameScreenSize.width), y:0},
         RandomItem(Resources.obstacleSpeeds));
       $scope.obstacles.push(obstacle);
     };
@@ -58,6 +58,9 @@ angular.module('myApp.controllers', ['myApp.services']).
       $scope.$apply(function(){
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(Resources.gameSpeed / 1000);
+          if (obstacle.position.y > Resources.gameScreenSize.height){
+            $scope.obstacles.splice($scope.obstacles.indexOf(obstacle), 1);
+          }
         });
 
         $scope.score += Resources.scoreSpeed;
