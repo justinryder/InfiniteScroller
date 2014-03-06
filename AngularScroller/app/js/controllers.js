@@ -59,13 +59,13 @@ angular.module('myApp.controllers', ['myApp.services']).
     obstacleSpawnManager();
 
     /* UPDATE */
-    setInterval(function(){
+    var updateInterval = setInterval(function(){
       $scope.$apply(function(){
+        $scope.floor.update(Resources.gameSpeed / 1000)
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(Resources.gameSpeed / 1000);
-
           if (AreColliding(obstacle.position, $scope.babyPosition)){
-            alert('YOU HAVE FUCKED UP NOW!')
+            $scope.endGame();
           }
 
           if (obstacle.position.y > Resources.gameScreenSize.height){
@@ -76,6 +76,10 @@ angular.module('myApp.controllers', ['myApp.services']).
         $scope.score += Resources.scoreSpeed;
       })
     }, Resources.gameSpeed);
+
+    $scope.endGame = function(){
+      clearInterval(updateInterval);
+    };
   }])
 
   .controller('HighScoresCtrl', ['$scope', function($scope){
