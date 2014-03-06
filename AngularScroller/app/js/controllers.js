@@ -7,9 +7,8 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.gameName = Resources.text.gameName;
     $scope.links = Resources.text.menuLinks;
   }])
-  .controller('GameCtrl', ['$scope', 'Resources', function($scope, Resources) {
+  .controller('GameCtrl', ['$scope', '$document', 'Resources', function($scope, $document, Resources) {
     $scope.babyImage = Resources.images.baby;
-
   }])
   .controller('HighScoresCtrl', ['$scope', function($scope){
     $scope.highScores = [{name:'Bob', score:1234},{name:'Jill', score:4321}];
