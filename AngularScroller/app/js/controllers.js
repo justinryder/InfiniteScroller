@@ -12,7 +12,7 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.obstacles = [];
     $scope.spawnObstacle = function() {
       console.log('spawning obstacle');
-      var resourceObstacle = Resources.obstaces[Math.floor((Math.random()*Resources.obstaces.length))];
+      var resourceObstacle = Resources.obstacles[Math.floor((Math.random()*Resources.obstacles.length))];
       var obstacle = new Obstacle(resourceObstacle, {x:Math.floor((Math.random()*100)), y:Math.floor((Math.random()*100))});
       $scope.obstacles.push(obstacle);
     };
