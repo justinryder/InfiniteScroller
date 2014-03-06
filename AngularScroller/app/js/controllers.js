@@ -155,13 +155,13 @@ function readCookie(name) {
 }
 
 function getHighScores() {
-	var cookie = readCookie('bb_newScore').split('|') || '';
+	var cookie = readCookie('bb_newScore') || '';
+	var allScores = cookie.split('|');
 	var highScores = [];
-	cookie.forEach(function(scoreItem) {
+	allScores.forEach(function(scoreItem) {
 		highScores.push(scoreItem.split(':')[1]);
 	});
 	highScores.sort(sortNumber);
-	console.log(highScores);
 	return highScores;
 }
 
