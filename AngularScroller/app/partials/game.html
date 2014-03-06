@@ -5,11 +5,11 @@
   <div ng-repeat="obstacle in obstacles" style="position:fixed; left: {{obstacle.position.x}}px; top: {{obstacle.position.y}}px">
     <img ng-src="{{obstacle.image}}" ng-width="{{obstacle.size.width}}" ng-height="{{obstacle.size.height}}" />
   </div>
-  	<div ng-style="position:fixed; left: {{floor.position.x}}px; top: {{floor.position.y}}px">
-		<img ng-src="{{floor.image}}" ng-width="{{floor.size.width}}" ng-height="{{floor.size.height}}" />
-	</div>
 	<div class="gamePlayArea" ng-mousemove="babyPosition.x = moveBaby($event)">
 		<img ng-src="{{babyImage}}" style="position: fixed; left: {{babyPosition.x}}px; top: {{babyPosition.y}}px;">
+		<div ng-style="position:fixed; left: {{floor.position.x}}px; top: {{floor.position.y}}px">
+			<img ng-src="{{floor.image}}" ng-width="{{floor.size.width}}" ng-height="{{floor.size.height}}" />
+		</div>
 	</div>
 	<div class="aisle" id="right"></div>
 </div>
