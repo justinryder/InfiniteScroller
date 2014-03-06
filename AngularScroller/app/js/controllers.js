@@ -3,9 +3,12 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
-
+  controller('MenuCtrl', ['$scope', function($scope) {
+    $scope.gameName = 'Baby Boomer';
   }])
-  .controller('MyCtrl2', [function() {
-
+  .controller('GameCtrl', ['$scope', function($scope) {
+    $scope.test = "game bitches";
+  }])
+  .controller('HighScoresCtrl', ['$scope', function($scope){
+    $scope.test = "high scores bitches";
   }]);
