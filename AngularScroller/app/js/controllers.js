@@ -61,7 +61,7 @@ angular.module('myApp.controllers', ['myApp.services']).
         obstacleSpawnManager();
       }, RandomItem(Resources.obstacleSpawnRates));
     }
-    // init the obstacle spawnning random loop
+    // init the obstacle spawning random loop
     obstacleSpawnManager();
 
     /* UPDATE */
