@@ -12,6 +12,10 @@ angular.module('myApp.controllers', ['myApp.services']).
     /* SCORE */
     $scope.score = 0;
 
+    /* FLOOR */
+    $scope.floorImage = Resources.images.floor;
+    $scope.floor = new Floor($scope.floorImage, { x: 0, y: 0 }, 5);
+
     /* BABY */
     $scope.babyImage = Resources.images.babies[0];
     $scope.moveBaby = function($event) {
@@ -87,6 +91,17 @@ function Obstacle(obstacle, position, speed) {
   self.image = obstacle.image;
   self.size = obstacle.size;
   self.position = position;
+  self.update = function(deltaTime){
+    position.y += speed * deltaTime;
+  };
+  return self;
+}
+
+function Floor(image, position, speed) {
+  var self = this;
+  self.image = image;
+  self.position = position;
+  self.speed = speed;
   self.update = function(deltaTime){
     position.y += speed * deltaTime;
   };

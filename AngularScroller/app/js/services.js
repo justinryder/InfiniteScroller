@@ -10,7 +10,8 @@ angular.module('myApp.services', []).
       babies:[
         'img/Baby1.png',
         'img/Baby2.png'
-      ]
+      ],
+      floor: 'img/background.png'
     },
     text:{
       gameName:'Baby, Boomer',
