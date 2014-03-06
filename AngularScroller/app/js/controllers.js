@@ -38,12 +38,17 @@ angular.module('myApp.controllers', ['myApp.services']).
         RandomItem(Resources.obstacleSpeeds));
       $scope.obstacles.push(obstacle);
     };
-    /* TODO: make this work, mofo
-    function ObstacleSpawnManager(){
-      setTimeout(function(){
 
+    function obstacleSpawnManager(){
+      setTimeout(function(){
+        $scope.$apply(function(){
+          $scope.spawnObstacle();
+        });
+        obstacleSpawnManager();
       }, RandomItem(Resources.obstacleSpawnRates));
-    }*/
+    }
+    // init the obstacle spawnning random loop
+    obstacleSpawnManager();
 
     /* UPDATE */
     setInterval(function(){
