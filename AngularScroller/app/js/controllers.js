@@ -61,9 +61,9 @@ angular.module('myApp.controllers', ['myApp.services']).
     /* UPDATE */
     setInterval(function(){
       $scope.$apply(function(){
+        $scope.floor.update(Resources.gameSpeed / 1000)
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(Resources.gameSpeed / 1000);
-
           if (AreColliding(obstacle.position, $scope.babyPosition)){
             alert('YOU HAVE FUCKED UP NOW!')
           }
