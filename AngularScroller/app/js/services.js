@@ -7,7 +7,7 @@
 angular.module('myApp.services', []).
   value('Resources', {
     images:{
-      baby:'img/PrimitiveBaby.png'
+      baby:'img/Baby1.png'
     },
     text:{
       gameName:'Baby, Boomer',
@@ -17,7 +17,7 @@ angular.module('myApp.services', []).
         {name:'Credits', url:'#/credits'}
       ],
       credits:[
-        {name:'Alex Toulan', role:'Lead Benchwarmer'},
+        {name:'Alex Toulan', role:'Sr. Software Development Intern'},
         {name:'Colin Robot-Ham', role:'Lead Artist'},
         {name:'Ellory Ross-Reid', role:'Lead Programmer'},
         {name:'Justin Ryder', role:'Lead Leader'}

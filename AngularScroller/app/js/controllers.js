@@ -18,6 +18,11 @@ angular.module('myApp.controllers', ['myApp.services']).
         Resources.obstacleSpeeds[Math.floor((Math.random()*Resources.obstacleSpeeds.length))]);
       $scope.obstacles.push(obstacle);
     };
+	$scope.moveBaby = function($event) {
+		var minX = 104; 
+		var maxX = 696; 
+		return $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;
+	};
 
     setInterval(function(){
       $scope.$apply(function(){
