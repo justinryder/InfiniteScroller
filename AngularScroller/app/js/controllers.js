@@ -15,6 +15,11 @@ angular.module('myApp.controllers', ['myApp.services']).
       var obstacle = new Obstacle(resourceObstacle, {x:Math.floor((Math.random()*Resources.gameScreenSize.width)), y:Math.floor((Math.random()*Resources.gameScreenSize.height))});
       $scope.obstacles.push(obstacle);
     };
+	$scope.moveBaby = function($event) {
+		var minX = 104; 
+		var maxX = 696; 
+		return $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;
+	};
   }])
   .controller('HighScoresCtrl', ['$scope', function($scope){
     $scope.highScores = [{name:'Bob', score:1234},{name:'Jill', score:4321}];
