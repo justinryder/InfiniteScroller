@@ -1,5 +1,7 @@
 /* app css stylesheet */
 
+/*  MENU  */
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -27,4 +29,38 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+
+
+/* GAME */
+
+.game {
+  position: absolute;
+  float: left;
+  border: solid black;
+  width: 800px;
+  height: 800px;
+}
+
+.leftAisle {
+  position: inherit;
+  float: left;
+  border: solid blue;
+  width: 100px;
+  height: 700px;
+}
+
+.rightAisle {
+  position: inherit;
+  float: right;
+  border: solid blue;
+  width: 100px;
+  height: 700px;
+}
+
+.gamePlayArea {
+  position: inherit;
+  border: solid black;
+  width: 600px;
+  height: 700px;
 }

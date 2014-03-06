@@ -1,8 +1,12 @@
 <p>
   game
 </p>
-<p>
-  {{test}}
+<p class="game">
+	<p class="leftAisle"></p>
+	<p class="gamePlayArea">
+		{{gameScreen}}
+	</p>
+	<p class="rightAisle"></p>
 </p>
 	<div ng-mousemove="minX = 100; maxX = 600; leftPos = $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;" style="height: 800px; width: 800px">
 	  <img ng-src="{{babyImage}}" style="position: fixed; left: {{leftPos}}px; top: 736px;">
