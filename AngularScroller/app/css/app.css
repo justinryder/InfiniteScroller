@@ -37,14 +37,14 @@
 .game {
   float: left;
   border: solid black 1px;
-  width: 800px;
-  height: 800px;
+  width: 806px;
+  height: 802px;
 }
 
 .aisle {
   border: solid blue 1px;
-  width: 98px;
-  height: 798px;
+  width: 100px;
+  height: 800px;
 }
 
 .aisle#left {
@@ -58,6 +58,6 @@
 .gamePlayArea {
   float: left;
   border: solid purple 1px;
-  width: 598px;
-  height: 798px;
+  width: 600px;
+  height: 800px;
 }
