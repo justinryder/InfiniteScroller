@@ -83,8 +83,7 @@ function Obstacle(obstacle, position, speed) {
   self.size = obstacle.size;
   self.position = position;
   self.update = function(deltaTime){
-    position.x += speed.x * deltaTime;
-    position.y += speed.y * deltaTime;
+    position.y += speed * deltaTime;
   };
   return self;
 }
