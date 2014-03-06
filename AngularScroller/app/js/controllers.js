@@ -2,14 +2,18 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('MenuCtrl', ['$scope', function($scope) {
-    $scope.gameName = 'Baby Boomer';
+angular.module('myApp.controllers', ['myApp.services']).
+  controller('MenuCtrl', ['$scope', 'Resources', function($scope, Resources) {
+    $scope.gameName = Resources.text.gameName;
+    $scope.links = Resources.text.menuLinks;
   }])
-  .controller('GameCtrl', ['$scope', function($scope) {
+  .controller('GameCtrl', ['$scope', 'Resources', function($scope, Resources) {
     $scope.test = "game bitches";
-    $scope.gameScreen = "Game Screen";
+    $scope.babyImage = Resources.images.baby;
   }])
   .controller('HighScoresCtrl', ['$scope', function($scope){
     $scope.test = "high scores bitches";
+  }])
+  .controller('CreditsCtrl', ['$scope', 'Resources', function($scope, Resources){
+    $scope.credits = Resources.text.credits;
   }]);

@@ -8,3 +8,7 @@
 	</p>
 	<p class="rightAisle"></p>
 </p>
+	<div ng-app ng-mousemove="leftPos = $event.pageX < 32 ? 0 : $event.pageX > 800 ? 768 : $event.pageX - 32" style="height: 800px; width: 800px">
+	  <img ng-src="{{babyImage}}" style="position: fixed; left: {{leftPos}}px; top: 736px;">
+	</div>
+</p>

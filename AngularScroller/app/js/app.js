@@ -14,5 +14,6 @@ config(['$routeProvider', function($routeProvider) {
   .when('/menu', {templateUrl: 'partials/menu.html', controller: 'MenuCtrl'})
   .when('/game', {templateUrl: 'partials/game.html', controller: 'GameCtrl'})
   .when('/highscores', {templateUrl: 'partials/highscores.html', controller: 'HighScoresCtrl'})
+  .when('/credits', {templateUrl: 'partials/credits.html', controller: 'CreditsCtrl'})
   .otherwise({redirectTo: '/menu'});
 }]);
