@@ -43,20 +43,39 @@ angular.module('myApp.controllers', ['myApp.services']).
 
     /* OBSTACLES */
     $scope.obstacles = [];
-    $scope.spawnObstacle = function() {
-      var resourceObstacle = RandomItem(Resources.obstacles);
-      var obstacle = new Obstacle(
-        resourceObstacle,
-        {x:Random(Resources.floorLimit.max - 64, Resources.floorLimit.min + 64), y:-resourceObstacle.size.height},
-        Resources.crawlSpeed);
-      $scope.obstacles.push(obstacle);
+
+    $scope.spawnAtSlot = function(it) {
+
+        var resourceObstacle = RandomItem(Resources.obstacles);
+        var obstacle = new Obstacle(
+          resourceObstacle,
+          {
+            x: (it * 64) + (Resources.floorLimit.min + 96),
+            y: -resourceObstacle.size.height
+          },
+          Resources.crawlSpeed
+          );
+        $scope.obstacles.push(obstacle);
+    };
+
+    $scope.spawnObstacleRow = function(min, max, gapWidth) {
+
+      var gapStart = Random(max, min - gapWidth);
+      var gapEnd = gapStart + gapWidth;
+
+      for(var i = min; i < gapStart; i++) {
+        $scope.spawnAtSlot(i);
+      }
+      for(var i = gapEnd; i < max; i++) {
+        $scope.spawnAtSlot(i);
+      }
     };
 
     var obstacleSpawnManagerInterval;
-    function obstacleSpawnManager(){
+    function obstacleSpawnManager() {
       obstacleSpawnManagerInterval = setTimeout(function(){
         $scope.$apply(function(){
-          $scope.spawnObstacle();
+          $scope.spawnObstacleRow(0, 10, 2);
         });
         obstacleSpawnManager();
       }, RandomItem(Resources.obstacleSpawnRates));

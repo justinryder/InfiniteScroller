@@ -46,5 +46,5 @@ angular.module('myApp.services', []).
       {image:'img/obstacle3.png', size:{width:64, height:64}}
     ],
     crawlSpeed:100,
-    obstacleSpawnRates:[100, 150, 200, 300, 400, 500, 1000, 1500, 2000]
+    obstacleSpawnRates:[3000, 5500, 6000, 7000, 7000, 5000, 8000, 4500, 3500]
   });
