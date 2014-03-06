@@ -35,18 +35,16 @@
 /* GAME */
 
 .game {
-  position: absolute;
   float: left;
-  border: solid black;
+  border: solid black 1px;
   width: 800px;
   height: 800px;
 }
 
 .aisle {
-  position: inherit;
-  border: solid blue;
-  width: 100px;
-  height: 700px;
+  border: solid blue 1px;
+  width: 98px;
+  height: 798px;
 }
 
 .aisle#left {
@@ -58,8 +56,8 @@
 }
 
 .gamePlayArea {
-  position: inherit;
-  border: solid purple;
-  width: 600px;
-  height: 700px;
+  float: left;
+  border: solid purple 1px;
+  width: 598px;
+  height: 798px;
 }
