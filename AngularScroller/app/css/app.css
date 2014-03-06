@@ -51,4 +51,10 @@
   border: solid purple 1px;
   width: 600px;
   height: 800px;
+  background-repeat: repeat;
+}
+
+.obstacle{
+  position: fixed;
+  border: 2px solid black;
 }

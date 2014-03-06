@@ -14,7 +14,13 @@ angular.module('myApp.controllers', ['myApp.services']).
 
     /* FLOOR */
     $scope.floorImage = Resources.images.floor;
-    $scope.floor = new Floor($scope.floorImage, { x: 0, y: 0 }, 5);
+    $scope.floor = new Floor($scope.floorImage, { x: 0, y: 0 }, Resources.crawlSpeed);
+    $scope.backgroundStyle = function(){
+      return {
+        'background-image': 'url(' + Resources.images.floor + ')',
+        'background-position': $scope.floor.position.x + 'px ' + $scope.floor.position.y + 'px'
+      };
+    };
 
     /* BABY */
     $scope.babyImage = Resources.images.babies[0];
@@ -61,9 +67,12 @@ angular.module('myApp.controllers', ['myApp.services']).
     /* UPDATE */
     var updateInterval = setInterval(function(){
       $scope.$apply(function(){
-        $scope.floor.update(Resources.gameSpeed / 1000)
+        var deltaTime = Resources.gameSpeed / 1000;
+
+        $scope.floor.update(deltaTime);
+
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
-          obstacle.update(Resources.gameSpeed / 1000);
+          obstacle.update(deltaTime);
           if (AreColliding(obstacle.position, $scope.babyPosition)){
             $scope.endGame();
           }
@@ -110,6 +119,12 @@ function Obstacle(obstacle, position, speed) {
   self.position = position;
   self.update = function(deltaTime){
     position.y += speed * deltaTime;
+  };
+  self.style = function(){
+    return {
+      left: -position.x * 0.5,
+      top: -position.y * 0.5
+    };
   };
   return self;
 }
