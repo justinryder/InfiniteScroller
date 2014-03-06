@@ -7,28 +7,8 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.gameName = Resources.text.gameName;
     $scope.links = Resources.text.menuLinks;
   }])
-
   .controller('GameCtrl', ['$scope', '$document', 'Resources', function($scope, $document, Resources) {
-    /* BABY */
-    $scope.babyImage = Resources.images.babies[0];
-    $scope.moveBaby = function($event) {
-        var minX = 104;
-        var maxX = 696;
-        return $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;
-      };
-
-    var babyImageIndex = 0;
-    setInterval(function(){
-      $scope.$apply(function(){
-        babyImageIndex++;
-        if (babyImageIndex > Resources.images.babies.length){
-          babyImageIndex = 0;
-        }
-        $scope.babyImage = Resources.images.babies[babyImageIndex];
-      });
-    }, Resources.babyAnimateSpeed);
-
-    /* OBSTACLES */
+    $scope.babyImage = Resources.images.baby;
     $scope.obstacles = [];
     $scope.spawnObstacle = function() {
       var resourceObstacle = Resources.obstacles[Math.floor((Math.random()*Resources.obstacles.length))];
@@ -38,8 +18,8 @@ angular.module('myApp.controllers', ['myApp.services']).
         Resources.obstacleSpeeds[Math.floor((Math.random()*Resources.obstacleSpeeds.length))]);
       $scope.obstacles.push(obstacle);
     };
+<<<<<<< HEAD
 
-    /* UPDATE */
     setInterval(function(){
       $scope.$apply(function(){
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
@@ -47,12 +27,17 @@ angular.module('myApp.controllers', ['myApp.services']).
         });
       })
     }, Resources.gameSpeed);
+=======
+	$scope.moveBaby = function($event) {
+		var minX = 104; 
+		var maxX = 696; 
+		return $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;
+	};
+>>>>>>> 2fda9c9df4c0c68a84e697f4a37b794f75e0fb8e
   }])
-
   .controller('HighScoresCtrl', ['$scope', function($scope){
     $scope.highScores = [{name:'Bob', score:1234},{name:'Jill', score:4321}];
   }])
-
   .controller('CreditsCtrl', ['$scope', 'Resources', function($scope, Resources){
     $scope.credits = Resources.text.credits;
   }]);

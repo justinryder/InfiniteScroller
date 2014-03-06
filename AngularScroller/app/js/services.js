@@ -7,7 +7,10 @@
 angular.module('myApp.services', []).
   value('Resources', {
     images:{
-      baby:'img/Baby1.png'
+      babies:[
+        'img/Baby1.png',
+        'img/Baby2.png'
+      ]
     },
     text:{
       gameName:'Baby, Boomer',
@@ -23,6 +26,7 @@ angular.module('myApp.services', []).
         {name:'Justin Ryder', role:'Lead Leader'}
       ]
     },
+    babyAnimateSpeed: 500,
     gameScreenSize:{
       width:600,
       height:800
