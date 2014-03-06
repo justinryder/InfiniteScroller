@@ -26,9 +26,9 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.babyImage = Resources.images.babies[0];
     $scope.babyPosition = {x:0,y:636};
     $scope.moveBaby = function($event) {
-        var minX = 104;
-        var maxX = 696;
-        return $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;
+        var minX = Resources.floorLimit.min;
+        var maxX = Resources.floorLimit.max;
+        return $event.pageX < minX ? minX : $event.pageX > maxX ? maxX : $event.pageX;
       };
 
     var babyImageIndex = 0;
@@ -48,13 +48,14 @@ angular.module('myApp.controllers', ['myApp.services']).
       var resourceObstacle = RandomItem(Resources.obstacles);
       var obstacle = new Obstacle(
         resourceObstacle,
-        {x:Random(Resources.gameScreenSize.width), y:-resourceObstacle.size.height},
+        {x:Random(Resources.floorLimit.max - 64, Resources.floorLimit.min + 64), y:-resourceObstacle.size.height},
         Resources.crawlSpeed);
       $scope.obstacles.push(obstacle);
     };
 
+    var obstacleSpawnManagerInterval;
     function obstacleSpawnManager(){
-      setTimeout(function(){
+      obstacleSpawnManagerInterval = setTimeout(function(){
         $scope.$apply(function(){
           $scope.spawnObstacle();
         });
@@ -88,6 +89,9 @@ angular.module('myApp.controllers', ['myApp.services']).
 
     $scope.endGame = function(){
       clearInterval(updateInterval);
+      if (obstacleSpawnManagerInterval){
+        clearTimeout(obstacleSpawnManagerInterval);
+      }
     };
   }])
 
@@ -100,7 +104,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   }]);
 
 function AreColliding(pos1, pos2){
-  return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 64;
+  return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 128;
 }
 
 function RandomItem(arr){
