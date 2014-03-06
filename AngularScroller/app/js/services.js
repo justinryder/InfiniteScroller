@@ -7,7 +7,7 @@
 angular.module('myApp.services', []).
   value('Resources', {
     images:{
-      baby:'img/PrimitiveBaby.png'
+      baby:'img/Baby1.png'
     },
     text:{
       gameName:'Baby, Boomer',
