@@ -1,2 +1,6 @@
 <h1>High Scores</h1>
-<p>{{test}}</p>
+<ul>
+  <li ng-repeat="highScore in highScores">
+    <span>{{highScore.name}}</span> - <span>{{highScore.score}}</span>
+  </li>
+</ul>
