@@ -23,7 +23,7 @@ angular.module('myApp.controllers', ['myApp.services']).
 
     /* BABY */
     $scope.babyImage = Resources.images.babies[0];
-    $scope.babyPosition = {x:0,y:636};
+    $scope.babyPosition = {x:500,y:636};
     $scope.moveBaby = function($event) {
         var minX = Resources.floorLimit.min;
         var maxX = Resources.floorLimit.max;
@@ -61,7 +61,7 @@ angular.module('myApp.controllers', ['myApp.services']).
         obstacleSpawnManager();
       }, RandomItem(Resources.obstacleSpawnRates));
     }
-    // init the obstacle spawnning random loop
+    // init the obstacle spawning random loop
     obstacleSpawnManager();
 
     /* UPDATE */
