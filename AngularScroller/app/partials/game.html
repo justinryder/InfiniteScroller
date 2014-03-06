@@ -1,6 +1,6 @@
 <div class="game">
 	<div class="aisle" id="left"></div>
-	<div class="gamePlayArea" ng-mousemove="minX = 100; maxX = 700; leftPos = $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;">
+	<div class="gamePlayArea" ng-mousemove="minX = 111; maxX = 674; leftPos = $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;">
 		{{gameScreen}}
 		<img ng-src="{{babyImage}}" style="position: fixed; left: {{leftPos}}px; top: 636px;">
 	</div>
