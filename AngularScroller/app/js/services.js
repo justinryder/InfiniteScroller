@@ -19,13 +19,17 @@ angular.module('myApp.services', []).
       credits:[
         {name:'Alex Toulan', role:'Lead Benchwarmer'},
         {name:'Colin Robot-Ham', role:'Lead Artist'},
-        {name:'Ellory Ross-Ried', role:'Lead Programmer'},
+        {name:'Ellory Ross-Reid', role:'Lead Programmer'},
         {name:'Justin Ryder', role:'Lead Leader'}
       ]
     },
+    gameScreenSize:{
+      width:600,
+      height:800
+    },
     obstacles:[
-      {image:'img/obstacle1.jpg', size:{width:32, height:32}},
-      {image:'img/obstacle2.jpg', size:{width:32, height:32}},
-      {image:'img/obstacle3.png', size:{width:32, height:32}}
+      {image:'img/obstacle1.jpg', size:{width:64, height:64}},
+      {image:'img/obstacle2.jpg', size:{width:64, height:64}},
+      {image:'img/obstacle3.png', size:{width:64, height:64}}
     ]
   });
