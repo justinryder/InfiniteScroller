@@ -32,6 +32,10 @@ angular.module('myApp.services', []).
       width:600,
       height:800
     },
+    floorLimit:{
+      min:50,
+      max:650
+    },
     gameSpeed: 50,
     scoreSpeed: 1,
     obstacles:[
