@@ -1,4 +1,5 @@
 <div class="game">
+  <div class="score">Score: {{score}}</div>
 	<div class="aisle" id="left"></div>
   <div ng-repeat="obstacle in obstacles" style="position:fixed; left: {{obstacle.position.x}}px; top: {{obstacle.position.y}}px">
     <img ng-src="{{obstacle.image}}" ng-width="{{obstacle.size.width}}" ng-height="{{obstacle.size.height}}" />

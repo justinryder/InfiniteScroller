@@ -31,12 +31,13 @@ angular.module('myApp.services', []).
       width:600,
       height:800
     },
-    gameSpeed: 500,
+    gameSpeed: 50,
+    scoreSpeed: 1,
     obstacles:[
       {image:'img/obstacle1.jpg', size:{width:64, height:64}},
       {image:'img/obstacle2.jpg', size:{width:64, height:64}},
       {image:'img/obstacle3.png', size:{width:64, height:64}}
     ],
-    obstacleSpeeds:[{x:0, y:10}, {x:10, y:10}, {x:-10, y:10}, {x:0, y:20}],
-    obstacleSpawnRates:[500, 1000, 1500, 2000]
+    obstacleSpeeds:[10, 25, 50, 75, 100, 125, 150],
+    obstacleSpawnRates:[100, 150, 200, 300, 400, 500, 1000, 1500, 2000]
   });

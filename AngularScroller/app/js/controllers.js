@@ -9,6 +9,9 @@ angular.module('myApp.controllers', ['myApp.services']).
   }])
 
   .controller('GameCtrl', ['$scope', '$document', 'Resources', function($scope, $document, Resources) {
+    /* SCORE */
+    $scope.score = 0;
+
     /* BABY */
     $scope.babyImage = Resources.images.babies[0];
     $scope.moveBaby = function($event) {
@@ -34,7 +37,7 @@ angular.module('myApp.controllers', ['myApp.services']).
       var resourceObstacle = RandomItem(Resources.obstacles);
       var obstacle = new Obstacle(
         resourceObstacle,
-        {x:Math.floor((Math.random()*Resources.gameScreenSize.width)), y:0},
+        {x:Random(Resources.gameScreenSize.width), y:0},
         RandomItem(Resources.obstacleSpeeds));
       $scope.obstacles.push(obstacle);
     };
@@ -55,7 +58,12 @@ angular.module('myApp.controllers', ['myApp.services']).
       $scope.$apply(function(){
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(Resources.gameSpeed / 1000);
+          if (obstacle.position.y > Resources.gameScreenSize.height){
+            $scope.obstacles.splice($scope.obstacles.indexOf(obstacle), 1);
+          }
         });
+
+        $scope.score += Resources.scoreSpeed;
       })
     }, Resources.gameSpeed);
   }])
@@ -83,8 +91,7 @@ function Obstacle(obstacle, position, speed) {
   self.size = obstacle.size;
   self.position = position;
   self.update = function(deltaTime){
-    position.x += speed.x * deltaTime;
-    position.y += speed.y * deltaTime;
+    position.y += speed * deltaTime;
   };
   return self;
 }
