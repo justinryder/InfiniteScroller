@@ -26,16 +26,14 @@
 
 .game {
   float: left;
-  border: solid black 1px;
-  width: 806px;
-  height: 802px;
+  width: 800px;
+  height: 800px;
   cursor: none;
 }
 
 .aisle {
-  border: solid blue 1px;
-  width: 100px;
-  height: 800px;
+  width: 12.5%;
+  height: 100%;
 }
 
 .aisle#left {
@@ -48,9 +46,8 @@
 
 .gamePlayArea {
   float: left;
-  border: solid purple 1px;
-  width: 600px;
-  height: 800px;
+  width: 75%;
+  height: 100%;
   background-repeat: repeat;
 }
 
