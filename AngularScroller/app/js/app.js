@@ -10,7 +10,9 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/menu', {templateUrl: 'partials/menu.html', controller: 'MenuCtrl'});
-  $routeProvider.when('/game', {templateUrl: 'partials/game.html', controller: 'GameCtrl'});
-  $routeProvider.otherwise({redirectTo: '/menu'});
+  $routeProvider
+  .when('/menu', {templateUrl: 'partials/menu.html', controller: 'MenuCtrl'})
+  .when('/game', {templateUrl: 'partials/game.html', controller: 'GameCtrl'})
+  .when('/highscores', {templateUrl: 'partials/highscores.html', controller: 'HighScoresCtrl'})
+  .otherwise({redirectTo: '/menu'});
 }]);
