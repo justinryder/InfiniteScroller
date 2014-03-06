@@ -87,10 +87,10 @@ angular.module('myApp.controllers', ['myApp.services']).
     }, Resources.gameSpeed);
 
     $scope.endGame = function(){
-		var highScores = getHighScores();
-		var newScore = prompt("What's your name?") + ':' + $scope.score;
-		var newcookieval = readCookie('bb_newScore') + "|" + cookieval;
-		createCookie('bb_newScore', newcookieval);
+	  var highScores = getHighScores();
+	  var newScore = prompt("What's your name?") + ':' + $scope.score;
+	  var newcookieval = readCookie('bb_newScore') + "|" + newScore;
+	  createCookie('bb_newScore', newcookieval);
       clearInterval(updateInterval);
       clearInterval(babyImageInterval);
       clearTimeout(obstacleSpawnManagerInterval);
