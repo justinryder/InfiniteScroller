@@ -8,6 +8,7 @@ angular.module('myApp.controllers', []).
   }])
   .controller('GameCtrl', ['$scope', function($scope) {
     $scope.test = "game bitches";
+    $scope.gameScreen = "Game Screen";
   }])
   .controller('HighScoresCtrl', ['$scope', function($scope){
     $scope.test = "high scores bitches";
