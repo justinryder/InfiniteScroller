@@ -13,7 +13,6 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.score = 0;
 
     /* FLOOR */
-    $scope.floorImage = Resources.images.floor;
     $scope.floor = new Floor($scope.floorImage, { x: 0, y: 0 }, Resources.crawlSpeed);
     $scope.backgroundStyle = function(){
       return {
@@ -32,7 +31,7 @@ angular.module('myApp.controllers', ['myApp.services']).
       };
 
     var babyImageIndex = 0;
-    setInterval(function(){
+    var babyImageInterval = setInterval(function(){
       $scope.$apply(function(){
         babyImageIndex++;
         if (babyImageIndex > Resources.images.babies.length){
@@ -89,9 +88,8 @@ angular.module('myApp.controllers', ['myApp.services']).
 
     $scope.endGame = function(){
       clearInterval(updateInterval);
-      if (obstacleSpawnManagerInterval){
-        clearTimeout(obstacleSpawnManagerInterval);
-      }
+      clearInterval(babyImageInterval);
+      clearTimeout(obstacleSpawnManagerInterval);
     };
   }])
 
@@ -101,6 +99,13 @@ angular.module('myApp.controllers', ['myApp.services']).
 
   .controller('CreditsCtrl', ['$scope', 'Resources', function($scope, Resources){
     $scope.credits = Resources.text.credits;
+    $scope.creditsPosition = Resources.gameScreenSize.height;
+    setInterval(function(){
+      $scope.$apply(function(){
+        var deltaTime = Resources.creditsInterval / 1000;
+        $scope.creditsPosition -= Resources.creditsScrollSpeed * deltaTime;
+      });
+    }, Resources.creditsInterval);
   }]);
 
 function AreColliding(pos1, pos2){

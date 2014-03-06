@@ -1,9 +1,9 @@
-<ul class="menu">
-	<li class="menuTitle">Credits</li>
-	  <li ng-repeat="credit in credits">
-	  	<p>
-		    <div>{{credit.name}}</div>
-		    <div> - {{credit.role}}</div>
-		</p>
-	  </li>
-</ul>
+<div class="menu">
+  <h1>Credits</h1>
+  <ul style="position:fixed; top:{{creditsPosition}}px">
+  	<li ng-repeat="credit in credits">
+	    <div>{{credit.name}}</div>
+	    <div> - {{credit.role}}</div>
+  	 </li>
+  </ul>
+</div>

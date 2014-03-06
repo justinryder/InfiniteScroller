@@ -9,17 +9,31 @@
   list-style: none;
   border-top: 0.1em solid black;
   border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
+  margin-bottom:2em;
 }
 
-.menuTitle {
+.menu > h1 {
   font-family: Arial;
   font-size: 1.5em;
   background: #bcd;
-  list-style: none;
   border-top: 0.1em solid black;
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
+}
+
+.menu > ul {
+  list-style: none;
+  font-family: Arial;
+  font-size: 1.5em;
+  background: #bcd;
+  border-top: 0.1em solid black;
+  border-bottom: 0.1em solid black;
+  margin: 0;
+}
+
+.menu > li{
+  padding: 0;
+  margin: 0;
 }
 
 /* GAME */
@@ -53,5 +67,4 @@
 
 .obstacle{
   position: fixed;
-  border: 2px solid black;
 }
