@@ -1,6 +1,6 @@
 <div class="game">
 	<div class="aisle" id="left"></div>
-  <div ng-repeat="obstacle in obstacles" style="position:absolute;float:left">
+  <div ng-repeat="obstacle in obstacles" style="position:fixed; left: {{obstacle.position.x}}px; top: {{obstacle.position.y}}px">
     <img ng-src="{{obstacle.image}}" ng-width="{{obstacle.size.width}}" ng-height="{{obstacle.size.height}}" />
   </div>
 	<div class="gamePlayArea" ng-mousemove="minX = 100; maxX = 700; leftPos = $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;">

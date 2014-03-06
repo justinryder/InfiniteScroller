@@ -11,9 +11,8 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.babyImage = Resources.images.baby;
     $scope.obstacles = [];
     $scope.spawnObstacle = function() {
-      console.log('spawning obstacle');
       var resourceObstacle = Resources.obstacles[Math.floor((Math.random()*Resources.obstacles.length))];
-      var obstacle = new Obstacle(resourceObstacle, {x:Math.floor((Math.random()*100)), y:Math.floor((Math.random()*100))});
+      var obstacle = new Obstacle(resourceObstacle, {x:Math.floor((Math.random()*Resources.gameScreenSize.width)), y:Math.floor((Math.random()*Resources.gameScreenSize.height))});
       $scope.obstacles.push(obstacle);
     };
   }])
