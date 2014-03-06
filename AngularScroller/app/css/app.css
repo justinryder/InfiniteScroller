@@ -39,6 +39,7 @@
   border: solid black 1px;
   width: 806px;
   height: 802px;
+  cursor: none;
 }
 
 .aisle {
@@ -60,5 +61,4 @@
   border: solid purple 1px;
   width: 600px;
   height: 800px;
-  cursor: none;
 }
