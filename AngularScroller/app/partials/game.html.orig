@@ -1,23 +1,16 @@
-<p>
-  game
-</p>
 <div class="game">
 	<div class="aisle" id="left"></div>
-	<div class="gamePlayArea">
-		{{gameScreen}}
 <<<<<<< HEAD
-	</p>
-	<p class="rightAisle"></p>
-</p>
-<div ng-mousemove="minX = 100; maxX = 600; leftPos = $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;" style="height: 800px; width: 800px">
-  <img ng-src="{{babyImage}}" style="position: fixed; left: {{leftPos}}px; top: 736px;">
-</div>
+  <div ng-repeat="obstacle in obstacles" style="position:absolute;float:left">
+    <img ng-src="{{obstacle.image}}" ng-width="{{obstacle.size.width}}" ng-height="{{obstacle.size.height}}" />
+  </div>
+	<div class="gamePlayArea" ng-mousemove="minX = 100; maxX = 600; leftPos = $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;">
 =======
+	<div class="gamePlayArea" ng-mousemove="minX = 100; maxX = 700; leftPos = $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;">
+		{{gameScreen}}
+>>>>>>> 9530bad7873ecaf8a9fbccd6b14b1add23674f66
+		<img ng-src="{{babyImage}}" style="position: fixed; left: {{leftPos}}px; top: 636px;">
 	</div>
 	<div class="aisle" id="right"></div>
 </div>
-	<div ng-mousemove="minX = 100; maxX = 600; leftPos = $event.pageX < minX+32 ? minX : $event.pageX > maxX ? maxX-32 : $event.pageX - 32;" style="height: 800px; width: 800px">
-	  <img ng-src="{{babyImage}}" style="position: fixed; left: {{leftPos}}px; top: 736px;">
-	</div>
-</p>
->>>>>>> 568f8199534e280121fea075e47c3bda8acb57ba
+<button ng-click="spawnObstacle()">Spawn Obstacle</button>
