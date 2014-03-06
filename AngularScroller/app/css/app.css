@@ -1,42 +1,54 @@
 /* app css stylesheet */
 
+body{
+  margin: 0;
+  padding: 0;
+}
+
+ul{
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-padding-start: 0;
+}
+
 /*  MENU  */
 
 .menu {
   font-family: Arial;
-  font-size: 3.0em;
   background: #abf;
-  list-style: none;
   border-top: 0.1em solid black;
   border-bottom: 0.1em solid black;
-  margin-bottom:2em;
+  margin-bottom: 0;
 }
 
 .menu > h1 {
   font-family: Arial;
-  font-size: 1.5em;
+  font-size: 5em;
   background: #bcd;
   border-top: 0.1em solid black;
   border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
+  margin: 1em 0;
+  z-index: 1;
+  text-align: center;
 }
 
 .menu > ul {
   list-style: none;
   font-family: Arial;
-  font-size: 1.5em;
+  font-size: 3em;
   background: #bcd;
   border-top: 0.1em solid black;
   border-bottom: 0.1em solid black;
-  margin: 0;
+  z-index: -1;
+  width:100%;
 }
 
-.menu > li{
+.menu > li {
   padding: 0;
-  margin: 0;
+  margin: 1em auto;
 }
 
-/* GAME */
+/* GAME */  
 
 .game {
   float: left;
