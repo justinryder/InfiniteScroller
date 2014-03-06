@@ -27,9 +27,11 @@ angular.module('myApp.services', []).
       width:600,
       height:800
     },
+    gameSpeed: 500,
     obstacles:[
       {image:'img/obstacle1.jpg', size:{width:64, height:64}},
       {image:'img/obstacle2.jpg', size:{width:64, height:64}},
       {image:'img/obstacle3.png', size:{width:64, height:64}}
-    ]
+    ],
+    obstacleSpeeds:[{x:0, y:10}, {x:10, y:10}, {x:-10, y:10}, {x:0, y:20}]
   });
