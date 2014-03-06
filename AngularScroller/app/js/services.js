@@ -22,12 +22,14 @@ angular.module('myApp.services', []).
       ],
       credits:[
         {name:'Alex Toulan', role:'Sr. Software Development Intern'},
-        {name:'Colin Robot-Ham', role:'Lead Artist'},
-        {name:'Ellory Ross-Reid', role:'Lead Programmer'},
+        {name:'Colin Koponen-Robotham', role:'Lead Artist'},
+        {name:'Ellery Ross-Reid', role:'Lead Programmer'},
         {name:'Justin Ryder', role:'Lead Leader'}
       ]
     },
-    babyAnimateSpeed: 500,
+    creditsScrollSpeed: 50,
+    creditsInterval: 50,
+    babyAnimateSpeed: 200,
     gameScreenSize:{
       width:600,
       height:800
