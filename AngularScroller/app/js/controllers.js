@@ -31,13 +31,19 @@ angular.module('myApp.controllers', ['myApp.services']).
     /* OBSTACLES */
     $scope.obstacles = [];
     $scope.spawnObstacle = function() {
-      var resourceObstacle = Resources.obstacles[Math.floor((Math.random()*Resources.obstacles.length))];
+      var resourceObstacle = RandomItem(Resources.obstacles);
       var obstacle = new Obstacle(
         resourceObstacle,
         {x:Math.floor((Math.random()*Resources.gameScreenSize.width)), y:0},
-        Resources.obstacleSpeeds[Math.floor((Math.random()*Resources.obstacleSpeeds.length))]);
+        RandomItem(Resources.obstacleSpeeds));
       $scope.obstacles.push(obstacle);
     };
+    /* TODO: make this work, mofo
+    function ObstacleSpawnManager(){
+      setTimeout(function(){
+
+      }, RandomItem(Resources.obstacleSpawnRates));
+    }*/
 
     /* UPDATE */
     setInterval(function(){
@@ -56,6 +62,15 @@ angular.module('myApp.controllers', ['myApp.services']).
   .controller('CreditsCtrl', ['$scope', 'Resources', function($scope, Resources){
     $scope.credits = Resources.text.credits;
   }]);
+
+function RandomItem(arr){
+  return arr[Random(arr.length)];
+}
+
+function Random(max, min){
+  min = min || 0;
+  return Math.floor((Math.random()*max)+min);
+}
 
 function Obstacle(obstacle, position, speed) {
   var self = this;
