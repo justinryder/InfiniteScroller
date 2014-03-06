@@ -117,7 +117,8 @@ angular.module('myApp.controllers', ['myApp.services']).
   }])
 
   .controller('HighScoresCtrl', ['$scope', function($scope){
-	var allScores = readCookie('bb_newScore').split('|');
+    var cookie = readCookie('bb_newScore') || '';
+	var allScores = cookie.split('|');
 	var highScores = [];
 	allScores.forEach(function(scoreItem) {
 		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
@@ -154,7 +155,7 @@ function readCookie(name) {
 }
 
 function getHighScores() {
-	var cookie = readCookie('bb_newScore').split('|');
+	var cookie = readCookie('bb_newScore').split('|') || '';
 	var highScores = [];
 	cookie.forEach(function(scoreItem) {
 		highScores.push(scoreItem.split(':')[1]);
