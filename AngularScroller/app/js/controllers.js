@@ -24,7 +24,7 @@ angular.module('myApp.controllers', ['myApp.services']).
 
     /* BABY */
     $scope.babyImage = Resources.images.babies[0];
-    $scope.babyPosition = {x:0,y:636};
+    $scope.babyPosition = {x:500,y:636};
     $scope.moveBaby = function($event) {
         var minX = 104;
         var maxX = 696;
