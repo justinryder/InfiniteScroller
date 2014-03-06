@@ -5,6 +5,7 @@
 angular.module('myApp.controllers', ['myApp.services']).
   controller('MenuCtrl', ['$scope', 'Resources', function($scope, Resources) {
     $scope.gameName = Resources.text.gameName;
+    $scope.links = Resources.text.menuLinks;
   }])
   .controller('GameCtrl', ['$scope', 'Resources', function($scope, Resources) {
     $scope.test = "game bitches";
@@ -12,4 +13,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   }])
   .controller('HighScoresCtrl', ['$scope', function($scope){
     $scope.test = "high scores bitches";
+  }])
+  .controller('CreditsCtrl', ['$scope', 'Resources', function($scope, Resources){
+    $scope.credits = Resources.text.credits;
   }]);

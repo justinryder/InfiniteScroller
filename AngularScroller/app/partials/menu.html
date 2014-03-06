@@ -1,9 +1,6 @@
 <h1>{{gameName}}</h1>
 <ul>
-  <li>
-    <a href="#/game">Play</a>
-  </li>
-  <li>
-    <a href="#/highscores">High Scores</a>
+  <li ng-repeat="link in links">
+    <a href="{{link.url}}">{{link.name}}</a>
   </li>
 </ul>

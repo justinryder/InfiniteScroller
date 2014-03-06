@@ -11,6 +11,17 @@ angular.module('myApp.services', []).
       baby:'img/baby.png'
     },
     text:{
-      gameName:'Baby, Boomer'
+      gameName:'Baby, Boomer',
+      menuLinks:[
+        {name:'Play', url:'#/game'},
+        {name:'High Scores', url:'#/highscores'},
+        {name:'Credits', url:'#/credits'}
+      ],
+      credits:[
+        {name:'Alex Toulan', role:'Lead Benchwarmer'},
+        {name:'Colin Robot-Ham', role:'Lead Artist'},
+        {name:'Ellory Ross-Ried', role:'Lead Programmer'},
+        {name:'Justin Ryder', role:'Lead Leader'}
+      ]
     }
   });
