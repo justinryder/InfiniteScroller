@@ -88,6 +88,10 @@ angular.module('myApp.controllers', ['myApp.services']).
     }, Resources.gameSpeed);
 
     $scope.endGame = function(){
+		var highScores = getHighScores();
+		var newScore = prompt("What's your name?") + ':' + $scope.score;
+		var newcookieval = readCookie('bb_newScore') + "|" + cookieval;
+		createCookie('bb_newScore', newcookieval);
       clearInterval(updateInterval);
       if (obstacleSpawnManagerInterval){
         clearTimeout(obstacleSpawnManagerInterval);
@@ -96,13 +100,54 @@ angular.module('myApp.controllers', ['myApp.services']).
   }])
 
   .controller('HighScoresCtrl', ['$scope', function($scope){
-    $scope.highScores = [{name:'Bob', score:1234},{name:'Jill', score:4321}];
+	var allScores = readCookie('bb_newScore').split('|');
+	var highScores = [];
+	allScores.forEach(function(scoreItem) {
+		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
+	});
+	highScores.sort(sortHighScores);
+	$scope.highScores = highScores;
   }])
 
   .controller('CreditsCtrl', ['$scope', 'Resources', function($scope, Resources){
     $scope.credits = Resources.text.credits;
   }]);
 
+function createCookie(name,value) {
+	var expires = "; expires=Tue, 19 Jan 2038 03:14:07 GMT;";
+	document.cookie = name+"="+value+expires+" path=/";
+}
+  
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function getHighScores() {
+	var cookie = readCookie('bb_newScore').split('|');
+	var highScores = [];
+	cookie.forEach(function(scoreItem) {
+		highScores.push(scoreItem.split(':')[1]);
+	});
+	highScores.sort(sortNumber);
+	console.log(highScores);
+	return highScores;
+}
+
+function sortNumber(a,b) {
+    return b - a;
+}
+
+function sortHighScores(a,b) {
+    return b.score - a.score;
+}
+  
 function AreColliding(pos1, pos2){
   return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 128;
 }
