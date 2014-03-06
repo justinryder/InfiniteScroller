@@ -2,7 +2,6 @@
 
 /* Services */
 
-
 // Demonstrate how to register services
 // In this case it is a simple value service.
 angular.module('myApp.services', []).
@@ -23,5 +22,10 @@ angular.module('myApp.services', []).
         {name:'Ellory Ross-Ried', role:'Lead Programmer'},
         {name:'Justin Ryder', role:'Lead Leader'}
       ]
-    }
+    },
+    obstacles:[
+      {image:'img/obstacle1.jpg', size:{width:32, height:32}},
+      {image:'img/obstacle2.jpg', size:{width:32, height:32}},
+      {image:'img/obstacle3.png', size:{width:32, height:32}}
+    ]
   });

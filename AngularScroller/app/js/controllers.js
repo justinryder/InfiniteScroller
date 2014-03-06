@@ -9,6 +9,13 @@ angular.module('myApp.controllers', ['myApp.services']).
   }])
   .controller('GameCtrl', ['$scope', '$document', 'Resources', function($scope, $document, Resources) {
     $scope.babyImage = Resources.images.baby;
+    $scope.obstacles = [];
+    $scope.spawnObstacle = function() {
+      console.log('spawning obstacle');
+      var resourceObstacle = Resources.obstaces[Math.floor((Math.random()*Resources.obstaces.length))];
+      var obstacle = new Obstacle(resourceObstacle, {x:Math.floor((Math.random()*100)), y:Math.floor((Math.random()*100))});
+      $scope.obstacles.push(obstacle);
+    };
   }])
   .controller('HighScoresCtrl', ['$scope', function($scope){
     $scope.highScores = [{name:'Bob', score:1234},{name:'Jill', score:4321}];
@@ -16,3 +23,11 @@ angular.module('myApp.controllers', ['myApp.services']).
   .controller('CreditsCtrl', ['$scope', 'Resources', function($scope, Resources){
     $scope.credits = Resources.text.credits;
   }]);
+
+function Obstacle(obstacle, position) {
+  return {
+    image: obstacle.image,
+    size: obstacle.size,
+    position: position
+  };
+}
