@@ -5,7 +5,19 @@
 angular.module('myApp.controllers', ['myApp.services']).
   controller('MenuCtrl', ['$scope', 'Resources', function($scope, Resources) {
     $scope.gameName = Resources.text.gameName;
-    $scope.links = Resources.text.menuLinks;
+    $scope.links = [];
+
+    var i = 0;
+    var introInterval = setInterval(function(){
+      $scope.$apply(function(){
+        $scope.links.push(Resources.text.menuLinks[i]);
+        i++;
+        if (i >= Resources.text.menuLinks.length){
+          clearInterval(introInterval);
+          i = null;// helpin the GC? wtfjsidk
+        }
+      });
+    }, 1000);
   }])
 
   .controller('GameCtrl', ['$scope', '$document', 'Resources', function($scope, $document, Resources) {
