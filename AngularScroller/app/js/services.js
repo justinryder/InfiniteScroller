@@ -69,5 +69,5 @@ angular.module('myApp.services', []).
     bottleSize: {width:64, height:64},
     crawlSpeed:100,
     obstacleSpawnRates:[3000, 5500, 5000, 4500, 3500, 2000, 2500],
-    powerupSpawnRates:[1000]
+    powerupSpawnRates:[15000, 20000, 25000]
   });

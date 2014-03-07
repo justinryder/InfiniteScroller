@@ -150,8 +150,19 @@ angular.module('myApp.controllers', ['myApp.services']).
           bottle.update(deltaTime);
         });
 
+		var powerupsToRemove = [];
         Enumerable.From($scope.powerups).ForEach(function(powerup){
           powerup.update(deltaTime);
+		  
+		  if (AreColliding(powerup.position, powerup.size, $scope.babyPosition, {width:Resources.babySize, height:Resources.babySize})){
+            $scope.numBottles++;
+			powerupsToRemove.push($scope.powerups.indexOf(powerup));
+            powerup.colliding = true;
+            return;
+          }
+          else {
+            powerup.colliding = false;
+          }
         });
 
         var bottlesToRemove = [];
@@ -199,6 +210,12 @@ angular.module('myApp.controllers', ['myApp.services']).
         bottlesToRemove.forEach(
           function(index) {
             $scope.bottles.splice(index - numRemoved, 1);
+            numRemoved++;
+          });
+        numRemoved = 0;
+        powerupsToRemove.forEach(
+          function(index) {
+            $scope.powerups.splice(index - numRemoved, 1);
             numRemoved++;
           });
 
