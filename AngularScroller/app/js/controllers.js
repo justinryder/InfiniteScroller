@@ -116,18 +116,18 @@ angular.module('myApp.controllers', ['myApp.services']).
     }, Resources.gameSpeed);
 
     $scope.endGame = function(){
+      clearInterval(updateInterval);
+      clearInterval(babyImageInterval);
+      clearTimeout(obstacleSpawnManagerInterval);
   	  var highScores = getHighScores();
   	  var newScore = prompt("What's your name?") + ':' + $scope.score;
   	  var newcookieval = readCookie('bb_newScore') !== undefined ? readCookie('bb_newScore') + "|" + newScore : newScore;
   	  createCookie('bb_newScore', newcookieval);
-      clearInterval(updateInterval);
-      clearInterval(babyImageInterval);
-      clearTimeout(obstacleSpawnManagerInterval);
       $location.path('/highscores');
     };
   }])
-
-  .controller('HighScoresCtrl', ['$scope', function($scope){
+	
+  .controller('HighScoresCtrl', ['$scope', 'Resources', function($scope, Resources){
     var cookie = readCookie('bb_newScore') || '';
   	var allScores = cookie.split('|') == "" ? [] : cookie.split('|');
   	var highScores = [];
@@ -136,7 +136,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   	});
   	highScores.sort(sortHighScores);
     $scope.highScores = [];
-    console.log(highScores);
+	$scope.links = Resources.text.highScoreLinks;
     TrickleArray(highScores, $scope.highScores, $scope);
   }])
 
