@@ -120,7 +120,7 @@ ul{
   background: url(../img/background.png) repeat;
 }
 
-.obstacle {
+.obstacle, .bottle {
   position: fixed;
   z-index: 0;
 }

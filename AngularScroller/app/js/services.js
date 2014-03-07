@@ -11,7 +11,8 @@ angular.module('myApp.services', []).
         'img/Baby1.png',
         'img/Baby2.png'
       ],
-      floor: 'img/background.png'
+      floor: 'img/background.png',
+      bottle: 'img/bottle.png'
     },
     text:{
       gameName:'Baby, Boomer',
@@ -53,11 +54,19 @@ angular.module('myApp.services', []).
       {image:'img/milk.png', size:{width:64, height:64}},
       {image:'img/Ham.png', size:{width:64, height:64}},
       {image:'img/cheese.png', size:{width:64, height:64}},
+<<<<<<< HEAD
       {image:'img/cart.png', size:{width:64, height:64}},
       {image:'img/Steak.png', size:{width:64, height:64}},
       {image:'img/HairySteak.png', size:{width:64, height:64}},
       {image:'img/Cheeseburger.png', size:{width:64, height:64}}
+=======
+      {image:'img/cheeseburger.png', size:{width:64, height:64}},
+      {image:'img/steak.png', size:{width:64, height:64}},
+      {image:'img/cart.png', size:{width:64, height:64}}
+>>>>>>> 132607e526472dcb576ba333f56d3a521782cd61
     ],
+    bottleSpeed: -150,
+    bottleSize: {width:64, height:64},
     crawlSpeed:100,
     obstacleSpawnRates:[3000, 5500, 5000, 4500, 3500, 2000, 2500]
   });
