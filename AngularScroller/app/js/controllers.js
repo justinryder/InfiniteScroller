@@ -18,8 +18,13 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.floor = new Floor($scope.floorImage, { x: 0, y: 0 }, Resources.crawlSpeed);
     $scope.backgroundStyle = function(){
       return {
-        //'background-image': 'url(' + Resources.images.floor + ')',
         'background-position': $scope.floor.position.x + 'px ' + $scope.floor.position.y + 'px'
+      };
+    };
+
+    $scope.aisleStyle = function(){
+      return {
+        'background-position': '-15px ' + $scope.floor.position.y + 'px'
       };
     };
 
