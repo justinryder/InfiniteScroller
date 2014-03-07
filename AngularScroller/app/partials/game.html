@@ -1,5 +1,5 @@
 <div class="game" ng-mousemove="babyPosition.x = moveBaby($event)" ng-click="fireBottle()">
-  <div class="score">Score: {{score}}</div>
+  <div class="score">Score: {{score}}    Bottles: {{numBottles}}</div>
 	<div class="aisle" id="left" ng-style="backgroundStyle()"></div>
   <div class="obstacle" ng-repeat="obstacle in obstacles" style="left: {{obstacle.position.x}}px; top: {{obstacle.position.y}}px" ng-class="{colliding: obstacle.colliding}">
     <img ng-src="{{obstacle.image}}" ng-width="{{obstacle.size.width}}" ng-height="{{obstacle.size.height}}" />

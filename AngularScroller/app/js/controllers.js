@@ -12,6 +12,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   .controller('GameCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources) {
     /* SCORE */
     $scope.score = 0;
+	$scope.numBottles = 5;
 
     /* FLOOR */
     $scope.floor = new Floor($scope.floorImage, { x: 0, y: 0 }, Resources.crawlSpeed);
@@ -56,8 +57,11 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.bottleImage = Resources.images.bottle;
 
     $scope.fireBottle = function(){
-      var bottle = new Bottle($scope.babyPosition, Resources.bottleSpeed);
-      $scope.bottles.push(bottle);
+	  if($scope.numBottles > 0) {
+		  var bottle = new Bottle($scope.babyPosition, Resources.bottleSpeed);
+		  $scope.bottles.push(bottle);
+		  $scope.numBottles--;
+	  }
     };
 
     /* OBSTACLES */
