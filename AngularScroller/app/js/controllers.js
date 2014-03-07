@@ -103,8 +103,9 @@ angular.module('myApp.controllers', ['myApp.services']).
         var obstaclesToRemove = [];
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(deltaTime);
-          if (AreColliding(obstacle.position, obstacle.size, $scope.babyPosition, {width:$scope.babySize, height:$scope.babySize})){
-            //$scope.endGame();
+          
+          if (AreColliding(obstacle.position, obstacle.size, $scope.babyPosition, {width:Resources.babySize, height:Resources.babySize})){
+            $scope.endGame();
             obstacle.colliding = true;
           }
           else {
