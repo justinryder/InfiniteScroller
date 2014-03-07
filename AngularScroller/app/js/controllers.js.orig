@@ -132,10 +132,18 @@ angular.module('myApp.controllers', ['myApp.services']).
       clearInterval(updateInterval);
       clearInterval(babyImageInterval);
       clearTimeout(obstacleSpawnManagerInterval);
+<<<<<<< HEAD
+
+=======
+>>>>>>> c9ac23e59366eb88d8f73bcdbc66e9a2fd27ad44
   	  var highScores = getHighScores();
   	  var newScore = prompt("What's your name?") + ':' + $scope.score;
   	  var newcookieval = readCookie('bb_newScore') !== undefined ? readCookie('bb_newScore') + "|" + newScore : newScore;
   	  createCookie('bb_newScore', newcookieval);
+<<<<<<< HEAD
+
+=======
+>>>>>>> c9ac23e59366eb88d8f73bcdbc66e9a2fd27ad44
       $location.path('/highscores');
     };
   }])
