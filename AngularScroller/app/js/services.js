@@ -51,6 +51,7 @@ angular.module('myApp.services', []).
       {image:'img/obstacle1.jpg', size:{width:64, height:64}},
       {image:'img/obstacle2.jpg', size:{width:64, height:64}},
       {image:'img/obstacle3.png', size:{width:64, height:64}},
+      {image:'img/milk.png', size:{width:64, height:64}},
       {image:'img/Ham.png', size:{width:64, height:64}}
     ],
     crawlSpeed:100,
