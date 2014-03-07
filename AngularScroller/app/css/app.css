@@ -1,4 +1,7 @@
 /* app css stylesheet */
+html {
+	background-color: black;
+}
 
 body{
   margin: 0;
