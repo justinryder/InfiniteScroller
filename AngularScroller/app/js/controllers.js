@@ -111,8 +111,13 @@ angular.module('myApp.controllers', ['myApp.services']).
             obstaclesToRemove.push($scope.obstacles.indexOf(obstacle));
           }
         });
-
-        obstaclesToRemove.forEach(function(index) { $scope.obstacles.splice(index, 1); })
+        
+        var numRemoved = 0;
+        obstaclesToRemove.forEach(
+          function(index) {
+            $scope.obstacles.splice(index - numRemoved, 1);
+            numRemoved++;
+          })
 
         $scope.score += Resources.scoreSpeed;
       })
