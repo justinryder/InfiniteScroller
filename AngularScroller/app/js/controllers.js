@@ -6,18 +6,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   controller('MenuCtrl', ['$scope', 'Resources', function($scope, Resources) {
     $scope.gameName = Resources.text.gameName;
     $scope.links = [];
-
-    var i = 0;
-    var introInterval = setInterval(function(){
-      $scope.$apply(function(){
-        $scope.links.push(Resources.text.menuLinks[i]);
-        i++;
-        if (i >= Resources.text.menuLinks.length){
-          clearInterval(introInterval);
-          i = null;// helpin the GC? wtfjsidk
-        }
-      });
-    }, 1000);
+    TrickleArray(Resources.text.menuLinks, $scope.links, $scope);
   }])
 
   .controller('GameCtrl', ['$scope', '$document', 'Resources', function($scope, $document, Resources) {
@@ -136,7 +125,9 @@ angular.module('myApp.controllers', ['myApp.services']).
   		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
   	});
   	highScores.sort(sortHighScores);
-  	$scope.highScores = highScores;
+  	//$scope.highScores = highScores;
+    $scope.highScores = [];
+    TrickleArray(highScores, $scope.highScores, $scope)
   }])
 
   .controller('CreditsCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources){
@@ -227,4 +218,19 @@ function Floor(image, position, speed) {
     position.y += speed * deltaTime;
   };
   return self;
+}
+
+function TrickleArray(source, destination, $scope, interval){
+  interval = interval || 1000;
+  var i = 0;
+  var interval = setInterval(function(){
+    $scope.$apply(function(){
+      destination.push(source[i]);
+      i++;
+      if (i >= source.length){
+        clearInterval(interval);
+        i = null;// helpin the GC? wtfjsidk
+      }
+    });
+  }, interval);
 }

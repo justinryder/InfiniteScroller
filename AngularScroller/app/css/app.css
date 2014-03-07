@@ -49,7 +49,7 @@ ul{
   margin-bottom: 0;
 }
 
-.menu > h1 {
+.menu h1 {
   font-family: Arial;
   font-size: 5em;
   background: #bcd;
@@ -60,7 +60,7 @@ ul{
   text-align: center;
 }
 
-.menu > ul {
+.menu ul {
   text-align: center;
   list-style: none;
   font-family: Arial;
@@ -69,18 +69,13 @@ ul{
   width:100%;
 }
 
-.menu > li {
+.menu li {
   display: inline-block;
   margin: auto;
   width: 70%;
   background: #bcd;
   border-top: 0.1em solid black;
   border-bottom: 0.1em solid black;
-}
-
-.menu > a {
-  margin: auto;
-  width: 70%;
 }
 
 /* GAME */  

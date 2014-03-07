@@ -1,6 +1,8 @@
-<ul class="menu">
-	<li class="menuTitle">High Scores</li>
-	<li ng-repeat="highScore in highScores">
+<div class="menu">
+  <h1>High Scores</h1>
+  <ul>
+  	<li ng-repeat="highScore in highScores">
 		<span>{{highScore.name}}</span> - <span>{{highScore.score}}</span>
 	</li>
-</ul>
+  </ul>
+</div>
