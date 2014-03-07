@@ -51,6 +51,15 @@ angular.module('myApp.controllers', ['myApp.services']).
       });
     }, Resources.babyAnimateSpeed);
 
+    /* BOTTLES */
+    $scope.bottles = [];
+    $scope.bottleImage = Resources.images.bottle;
+
+    $scope.fireBottle = function(){
+      var bottle = new Bottle($scope.babyPosition, Resources.bottleSpeed);
+      $scope.bottles.push(bottle);
+    };
+
     /* OBSTACLES */
     $scope.obstacles = [];
 
@@ -100,13 +109,29 @@ angular.module('myApp.controllers', ['myApp.services']).
 
         $scope.floor.update(deltaTime);
 
+        Enumerable.From($scope.bottles).ForEach(function(bottle){
+          bottle.update(deltaTime);
+        });
+
+        var bottlesToRemove = [];
         var obstaclesToRemove = [];
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(deltaTime);
+
+          Enumerable.From($scope.bottles).ForEach(function(bottle){
+            if (AreColliding(bottle.position, Resources.bottleSize, obstacle.position, obstacle.size)){
+              var bottleIndex = $scope.bottles.indexOf(bottle);
+              if (!Enumerable.From(bottlesToRemove).Any(function(b){b == bottleIndex})){
+                bottlesToRemove.push(bottleIndex);
+              }
+              obstaclesToRemove.push($scope.obstacles.indexOf(obstacle));
+            }
+          });
           
           if (AreColliding(obstacle.position, obstacle.size, $scope.babyPosition, {width:Resources.babySize, height:Resources.babySize})){
             $scope.endGame();
             obstacle.colliding = true;
+            return;
           }
           else {
             obstacle.colliding = false;
@@ -122,7 +147,13 @@ angular.module('myApp.controllers', ['myApp.services']).
           function(index) {
             $scope.obstacles.splice(index - numRemoved, 1);
             numRemoved++;
-          })
+          });
+        numRemoved = 0;
+        bottlesToRemove.forEach(
+          function(index) {
+            $scope.bottles.splice(index - numRemoved, 1);
+            numRemoved++;
+          });
 
         $scope.score += Resources.scoreSpeed;
       })
@@ -219,6 +250,22 @@ function RandomItem(arr){
 function Random(max, min){
   min = min || 0;
   return Math.floor((Math.random() * (max - min)) + min);
+}
+
+function Bottle(position, speed) {
+  var self = this;
+  self.position = {x:position.x, y:position.y};
+  self.speed = speed;
+  self.update = function(deltaTime){
+    self.position.y += speed * deltaTime;
+  };
+  self.style = function(){
+    return {
+      left: self.position.x + 'px',
+      top: self.position.y + 'px'
+    };
+  };
+  return self;
 }
 
 function Obstacle(obstacle, position, speed) {

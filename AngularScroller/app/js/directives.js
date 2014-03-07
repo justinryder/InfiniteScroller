@@ -19,7 +19,6 @@ angular.module('myApp.directives', []).
 		link: function (scope, element, attrs) {
             Hamster(element[0]).wheel(function(event, delta, deltaX, deltaY){
                 event.preventDefault();
-                console.log("Scroll");
             });
 		}
 	};
