@@ -2,7 +2,10 @@
   <h1>Credits</h1>
   <ul style="position:fixed; top:{{creditsPosition}}px">
   	<li ng-repeat="credit in credits">
-      <div class="credit">{{credit.name}} - {{credit.role}}</div>
+      <div class="credit">
+      	<div>{{credit.name}}</div>
+      	<div>{{credit.role}}</div>
+      </div>
     </li>
   </ul>
 </div>
