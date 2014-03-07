@@ -25,6 +25,11 @@ angular.module('myApp.services', []).
         {name:'Play', url:'#/game'},
         {name:'Credits', url:'#/credits'}
       ],
+      creditsLinks:[
+        {name:'Menu', url:'#/menu'},
+        {name:'Play', url:'#/game'},
+        {name:'High Scores', url:'#/highscores'}
+      ],
       credits:[
         {name:'Alex Toulan', role:'Lead Sr. Software Development Intern'},
         {name:'Colin Koponen-Robotham', role:'Lead Artistic Director'},

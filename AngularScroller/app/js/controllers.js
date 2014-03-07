@@ -144,6 +144,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   }])
 
   .controller('CreditsCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources){
+	$scope.links = Resources.text.creditsLinks;
     $scope.credits = Resources.text.credits;
     $scope.creditsPosition = Resources.gameScreenSize.height;
     var scrollingInterval = setInterval(function(){
