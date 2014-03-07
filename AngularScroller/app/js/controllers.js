@@ -70,7 +70,7 @@ angular.module('myApp.controllers', ['myApp.services']).
 
     $scope.spawnObstacleRow = function(min, max, gapWidth) {
 
-      var gapStart = Random(max, min - gapWidth);
+      var gapStart = Random(max - gapWidth, min);
       var gapEnd = gapStart + gapWidth;
 
       for(var i = min; i < gapStart; i++) {
@@ -158,7 +158,7 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.creditsPosition = Resources.gameScreenSize.height;
     var scrollingInterval = setInterval(function(){
       $scope.$apply(function(){
-        var deltaTime = Resources.creditsInterval / 1000;
+        var deltaTime = Resources.creditsInterval * 0.001;
         $scope.creditsPosition -= Resources.creditsScrollSpeed * deltaTime;
         if ($scope.creditsPosition < 0){
           clearInterval(scrollingInterval);
@@ -172,7 +172,7 @@ function createCookie(name,value) {
 	var expires = "; expires=Tue, 19 Jan 2038 03:14:07 GMT;";
 	document.cookie = name+"="+value+expires+" path=/";
 }
-  
+
 function readCookie(name) {
 	var nameEQ = name + "=";
 	var ca = document.cookie.split(';');
