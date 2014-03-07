@@ -94,12 +94,13 @@ angular.module('myApp.controllers', ['myApp.services']).
     obstacleSpawnManager();
 
     /* UPDATE */
-    var updateInterval = setInterval(function(){
-      $scope.$apply(function(){
-        var deltaTime = Resources.gameSpeed / 1000;
+    var updateInterval = setInterval(function() {
+      $scope.$apply(function() {
+        var deltaTime = Resources.gameSpeed * 0.001;
 
         $scope.floor.update(deltaTime);
 
+        var obstaclesToRemove = [];
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(deltaTime);
           if (AreColliding(obstacle.position, obstacle.size, $scope.babyPosition, {width:$scope.babySize, height:$scope.babySize})){
@@ -107,9 +108,11 @@ angular.module('myApp.controllers', ['myApp.services']).
           }
 
           if (obstacle.position.y > Resources.gameScreenSize.height){
-            $scope.obstacles.splice($scope.obstacles.indexOf(obstacle), 1);
+            obstaclesToRemove.push($scope.obstacles.indexOf(obstacle));
           }
         });
+
+        obstaclesToRemove.forEach(function(index) { $scope.obstacles.splice(index, 1); })
 
         $scope.score += Resources.scoreSpeed;
       })
