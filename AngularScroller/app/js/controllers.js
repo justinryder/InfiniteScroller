@@ -12,7 +12,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   .controller('GameCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources) {
     /* SCORE */
     $scope.score = 0;
-	$scope.numBottles = 5;
+	$scope.numBottles = 3;
 
     /* FLOOR */
     $scope.floor = new Floor($scope.floorImage, { x: 0, y: 0 }, Resources.crawlSpeed);
