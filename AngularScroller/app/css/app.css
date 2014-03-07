@@ -1,6 +1,6 @@
 /* app css stylesheet */
 html {
-	background-color: black;
+  background-color: black;
 }
 
 body{
@@ -46,23 +46,23 @@ ul{
 
 .menu {
   font-family: Arial;
-  background: #abf;
   border-top: 0.1em solid black;
   border-bottom: 0.1em solid black;
   margin-bottom: 0;
   font-family: 'Press Start 2P', cursive;
   color: white;
+  background-color:black;
 }
 
 .menu h1 {
   font-size: 5em;
-  background: #bcd;
   border-top: 0.1em solid black;
   border-bottom: 0.1em solid black;
   margin: 1em 0;
   z-index: 1;
   text-align: center;
   padding: 0.5em;
+  background-color:black;
 }
 
 .menu ul {
@@ -71,16 +71,17 @@ ul{
   font-size: 3em;
   z-index: -1;
   width:100%;
+  background-color:black;
 }
 
 .menu li {
   display: inline-block;
   margin: auto;
   width: 70%;
-  background: #bcd;
   border-top: 0.1em solid black;
   border-bottom: 0.1em solid black;
   padding: 0.5em;
+  background-color:black;
 }
 
 /* GAME */  

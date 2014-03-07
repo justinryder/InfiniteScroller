@@ -43,8 +43,8 @@ angular.module('myApp.services', []).
       height:800
     },
     floorLimit:{
-      min:50,
-      max:650
+      min:70,
+      max:670
     },
     gameSpeed: 50,
     scoreSpeed: 1,
