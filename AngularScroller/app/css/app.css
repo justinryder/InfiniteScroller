@@ -92,6 +92,7 @@ ul{
   font-family: Arial;
   font-size: 2em;
   color: #fff;
+  z-index: 1;
 }
 
 .aisle {
@@ -101,34 +102,24 @@ ul{
 
 .aisle#left {
   float: left;
+  background: url(../img/shelfleft.png) repeat;
 }
 
 .aisle#right {
   float: right;
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  z-index: -1;
-  background: url(../img/shopping-aisle.jpg) 0 0 repeat;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
+  background: url(../img/shelfright.png) repeat;
 }
 
 .gamePlayArea {
   float: left;
   width: 75%;
   height: 100%;
-  background-repeat: repeat;
+  background: url(../img/background.png) repeat;
 }
 
 .obstacle{
   position: fixed;
+  z-index: 0.9;
 }
 
 .colliding{
