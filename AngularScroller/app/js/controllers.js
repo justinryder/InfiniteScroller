@@ -190,7 +190,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
   	});
   	highScores.sort(sortHighScores);
-    $scope.highScores = highScores;
+    $scope.highScores = highScores.slice(0,10);
 	$scope.links = Resources.text.highScoreLinks;
 	$scope.highScoresPosition = Resources.gameScreenSize.height;
 	$scope.maxHighScoresPosition = 320;
