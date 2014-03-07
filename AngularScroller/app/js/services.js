@@ -50,7 +50,8 @@ angular.module('myApp.services', []).
     obstacles:[
       {image:'img/obstacle1.jpg', size:{width:64, height:64}},
       {image:'img/obstacle2.jpg', size:{width:64, height:64}},
-      {image:'img/obstacle3.png', size:{width:64, height:64}}
+      {image:'img/obstacle3.png', size:{width:64, height:64}},
+      {image:'img/Ham.png', size:{width:64, height:64}}
     ],
     crawlSpeed:100,
     obstacleSpawnRates:[3000, 5500, 5000, 4500, 3500, 2000, 2500]

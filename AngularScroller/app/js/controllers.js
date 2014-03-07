@@ -60,7 +60,7 @@ angular.module('myApp.controllers', ['myApp.services']).
         var obstacle = new Obstacle(
           resourceObstacle,
           {
-            x: (it * 64) + Resources.floorLimit.min + 64,
+            x: (it * 64) + Resources.floorLimit.min + 54,
             y: -resourceObstacle.size.height
           },
           Resources.crawlSpeed
