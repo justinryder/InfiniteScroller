@@ -56,7 +56,11 @@ angular.module('myApp.services', []).
       {image:'img/cheeseburger.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/steak.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/hairysteak.png', size:{width:64, height:64}, canShoot:true},
-      {image:'img/cart.png', size:{width:64, height:64}, canShoot:false}
+      {image:'img/cart.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/blockershelf.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/blockershelf.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/blockershelf.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/blockershelf.png', size:{width:64, height:64}, canShoot:false}
     ],
     powerups: [
       {image:'img/milk.png', size:{width:64, height:64}, canShoot:false},
