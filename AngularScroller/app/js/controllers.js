@@ -103,7 +103,11 @@ angular.module('myApp.controllers', ['myApp.services']).
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(deltaTime);
           if (AreColliding(obstacle.position, obstacle.size, $scope.babyPosition, {width:$scope.babySize, height:$scope.babySize})){
-            $scope.endGame();
+            //$scope.endGame();
+            obstacle.colliding = true;
+          }
+          else {
+            obstacle.colliding = false;
           }
 
           if (obstacle.position.y > Resources.gameScreenSize.height){
@@ -116,13 +120,15 @@ angular.module('myApp.controllers', ['myApp.services']).
     }, Resources.gameSpeed);
 
     $scope.endGame = function(){
+      clearInterval(updateInterval);
+      clearInterval(babyImageInterval);
+      clearTimeout(obstacleSpawnManagerInterval);
+
   	  var highScores = getHighScores();
   	  var newScore = prompt("What's your name?") + ':' + $scope.score;
   	  var newcookieval = readCookie('bb_newScore') !== undefined ? readCookie('bb_newScore') + "|" + newScore : newScore;
   	  createCookie('bb_newScore', newcookieval);
-      clearInterval(updateInterval);
-      clearInterval(babyImageInterval);
-      clearTimeout(obstacleSpawnManagerInterval);
+
       $location.path('/highscores');
     };
   }])

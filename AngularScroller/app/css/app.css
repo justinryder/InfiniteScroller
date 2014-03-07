@@ -130,3 +130,7 @@ ul{
 .obstacle{
   position: fixed;
 }
+
+.colliding{
+  border: 2px red solid;
+}
