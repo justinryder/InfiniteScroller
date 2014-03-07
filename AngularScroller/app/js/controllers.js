@@ -106,6 +106,39 @@ angular.module('myApp.controllers', ['myApp.services']).
     // init the obstacle spawning random duration loop
     obstacleSpawnManager();
 
+    /* POWERUPS */
+    $scope.powerups = [];
+
+    $scope.spawnPowerUpAtPosition = function(it) {
+
+        var resourcePowerup = RandomItem(Resources.powerups);
+        var powerup = new Powerup(
+          resourcePowerup,
+          {
+            x: (Random(0,10) * 64) + Resources.floorLimit.min + 54,
+            y: -resourcePowerup.size.height
+          },
+          Resources.crawlSpeed
+          );
+        $scope.powerups.push(powerup);
+    };
+
+    $scope.spawnPowerup = function() {
+	  $scope.spawnPowerUpAtPosition();
+    };
+
+    var powerupSpawnManagerInterval;
+    function powerupSpawnManager() {
+      powerupSpawnManagerInterval = setTimeout(function(){
+        $scope.$apply(function(){
+          $scope.spawnPowerup();
+        });
+        powerupSpawnManager();
+      }, RandomItem(Resources.powerupSpawnRates));
+    }
+    // init the powerup spawning random duration loop
+    powerupSpawnManager();
+
     /* UPDATE */
     var updateInterval = setInterval(function() {
       $scope.$apply(function() {
@@ -115,6 +148,10 @@ angular.module('myApp.controllers', ['myApp.services']).
 
         Enumerable.From($scope.bottles).ForEach(function(bottle){
           bottle.update(deltaTime);
+        });
+
+        Enumerable.From($scope.powerups).ForEach(function(powerup){
+          powerup.update(deltaTime);
         });
 
         var bottlesToRemove = [];
@@ -171,6 +208,7 @@ angular.module('myApp.controllers', ['myApp.services']).
 
     $scope.endGame = function(){
       $scope.obstacles = [];
+	  $scope.powerups = [];
       clearInterval(updateInterval);
       clearInterval(babyImageInterval);
       clearTimeout(obstacleSpawnManagerInterval);
@@ -294,6 +332,24 @@ function Obstacle(obstacle, position, speed) {
   self.size = obstacle.size;
   self.position = position;
   self.canShoot = obstacle.canShoot;
+  self.update = function(deltaTime){
+    position.y += speed * deltaTime;
+  };
+  self.style = function(){
+    return {
+      left: -position.x * 0.5,
+      top: -position.y * 0.5
+    };
+  };
+  return self;
+}
+
+function Powerup(powerup, position, speed) {
+  var self = this;
+  self.image = powerup.image;
+  self.size = powerup.size;
+  self.position = position;
+  self.canShoot = powerup.canShoot;
   self.update = function(deltaTime){
     position.y += speed * deltaTime;
   };
