@@ -44,7 +44,7 @@ angular.module('myApp.controllers', ['myApp.services']).
     var babyImageInterval = setInterval(function(){
       $scope.$apply(function(){
         babyImageIndex++;
-        if (babyImageIndex > Resources.images.babies.length){
+        if (babyImageIndex > Resources.images.babies.length-1){
           babyImageIndex = 0;
         }
         $scope.babyImage = Resources.images.babies[babyImageIndex];
@@ -154,6 +154,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   }])
 
   .controller('CreditsCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources){
+	$scope.links = Resources.text.creditsLinks;
     $scope.credits = Resources.text.credits;
     $scope.creditsPosition = Resources.gameScreenSize.height;
     var scrollingInterval = setInterval(function(){

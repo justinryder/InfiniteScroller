@@ -1,5 +1,10 @@
 <div class="menu">
   <h1>Credits</h1>
+  <ul>
+	  <li ng-repeat="link in links">
+		<a href="{{link.url}}">{{link.name}}</a>
+	  </li>
+  </ul>
   <ul style="position:fixed; top:{{creditsPosition}}px">
   	<li ng-repeat="credit in credits">
       <div class="credit">
