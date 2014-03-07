@@ -118,7 +118,7 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.endGame = function(){
   	  var highScores = getHighScores();
   	  var newScore = prompt("What's your name?") + ':' + $scope.score;
-  	  var newcookieval = readCookie('bb_newScore') + "|" + newScore;
+  	  var newcookieval = readCookie('bb_newScore') !== undefined ? readCookie('bb_newScore') + "|" + newScore : newScore;
   	  createCookie('bb_newScore', newcookieval);
       clearInterval(updateInterval);
       clearInterval(babyImageInterval);
@@ -128,7 +128,7 @@ angular.module('myApp.controllers', ['myApp.services']).
 
   .controller('HighScoresCtrl', ['$scope', function($scope){
     var cookie = readCookie('bb_newScore') || '';
-  	var allScores = cookie.split('|');
+  	var allScores = cookie.split('|') == "" ? [] : cookie.split('|');
   	var highScores = [];
   	allScores.forEach(function(scoreItem) {
   		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
@@ -136,6 +136,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   	highScores.sort(sortHighScores);
   	//$scope.highScores = highScores;
     $scope.highScores = [];
+	console.log(highScores);
     TrickleArray(highScores, $scope.highScores, $scope)
   }])
 
@@ -166,7 +167,7 @@ function readCookie(name) {
 		while (c.charAt(0)==' ') c = c.substring(1,c.length);
 		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
 	}
-	return null;
+	return undefined;
 }
 
 function getHighScores() {
@@ -234,7 +235,7 @@ function TrickleArray(source, destination, $scope, interval){
   var i = 0;
   var interval = setInterval(function(){
     $scope.$apply(function(){
-      destination.push(source[i]);
+      if(source[i] != undefined) { destination.push(source[i]) };
       i++;
       if (i >= source.length){
         clearInterval(interval);
