@@ -25,6 +25,15 @@ angular.module('myApp.controllers', ['myApp.services']).
     /* BABY */
     $scope.babyImage = Resources.images.babies[0];
     $scope.babyPosition = {x:500,y:636};
+    $scope.babyStyle = function(){
+      return {
+        position: 'fixed',
+        left: $scope.babyPosition.x + 'px',
+        top: $scope.babyPosition.y + 'px',
+        width: Resources.babySize + 'px',
+        height: Resources.babySize + 'px'
+      };
+    };
     $scope.moveBaby = function($event) {
       var minX = Resources.floorLimit.min;
       var maxX = Resources.floorLimit.max;
@@ -180,7 +189,7 @@ function sortHighScores(a,b) {
 }
   
 function AreColliding(pos1, pos2){
-  return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 128;
+  return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 256;
 }
 
 function RandomItem(arr){
@@ -233,4 +242,8 @@ function TrickleArray(source, destination, $scope, interval){
       }
     });
   }, interval);
+}
+
+function setRandomInterval(f, intervals){
+
 }

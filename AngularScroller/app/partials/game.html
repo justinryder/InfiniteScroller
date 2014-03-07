@@ -5,7 +5,7 @@
     <img ng-src="{{obstacle.image}}" ng-width="{{obstacle.size.width}}" ng-height="{{obstacle.size.height}}" />
   </div>
 	<div class="gamePlayArea" ng-mousemove="babyPosition.x = moveBaby($event)" ng-style="backgroundStyle()">
-		<img ng-src="{{babyImage}}" style="position: fixed; left: {{babyPosition.x}}px; top: {{babyPosition.y}}px;">
+		<img ng-src="{{babyImage}}" ng-style="babyStyle()">
 	</div>
 	<div class="aisle" id="right"></div>
 </div>

@@ -21,8 +21,8 @@ angular.module('myApp.services', []).
         {name:'Credits', url:'#/credits'}
       ],
       credits:[
-        {name:'Alex Toulan', role:'Sr. Software Development Intern'},
-        {name:'Colin Koponen-Robotham', role:'Lead Artist'},
+        {name:'Alex Toulan', role:'Lead Sr. Software Development Intern'},
+        {name:'Colin Koponen-Robotham', role:'Lead Artistic Director'},
         {name:'Ellery Ross-Reid', role:'Lead Programmer'},
         {name:'Justin Ryder', role:'Lead Leader'}
       ]
@@ -30,6 +30,7 @@ angular.module('myApp.services', []).
     creditsScrollSpeed: 50,
     creditsInterval: 50,
     babyAnimateSpeed: 200,
+    babySize: 128,
     gameScreenSize:{
       width:600,
       height:800
