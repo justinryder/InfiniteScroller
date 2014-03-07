@@ -96,7 +96,7 @@ ul{
 }
 
 .aisle {
-  width: 12.5%;
+  width: 10%;
   height: 100%;
 }
 
@@ -117,12 +117,12 @@ ul{
   background: url(../img/background.png) repeat;
 }
 
-.obstacle{
+.obstacle {
   position: fixed;
   z-index: 0.9;
 }
 
-.colliding{
+.colliding {
   border: 2px red solid;
 }
 
