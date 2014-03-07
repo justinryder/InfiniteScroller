@@ -54,16 +54,10 @@ angular.module('myApp.services', []).
       {image:'img/milk.png', size:{width:64, height:64}},
       {image:'img/Ham.png', size:{width:64, height:64}},
       {image:'img/cheese.png', size:{width:64, height:64}},
-<<<<<<< HEAD
-      {image:'img/cart.png', size:{width:64, height:64}},
-      {image:'img/Steak.png', size:{width:64, height:64}},
-      {image:'img/HairySteak.png', size:{width:64, height:64}},
-      {image:'img/Cheeseburger.png', size:{width:64, height:64}}
-=======
       {image:'img/cheeseburger.png', size:{width:64, height:64}},
       {image:'img/steak.png', size:{width:64, height:64}},
+      {image:'img/hairysteak.png', size:{width:64, height:64}},
       {image:'img/cart.png', size:{width:64, height:64}}
->>>>>>> 132607e526472dcb576ba333f56d3a521782cd61
     ],
     bottleSpeed: -150,
     bottleSize: {width:64, height:64},
