@@ -49,15 +49,17 @@ angular.module('myApp.services', []).
     gameSpeed: 50,
     scoreSpeed: 1,
     obstacles:[
-      {image:'img/boxes.png', size:{width:64, height:64}},
-      {image:'img/pizza.png', size:{width:64, height:64}},
-      {image:'img/milk.png', size:{width:64, height:64}},
-      {image:'img/Ham.png', size:{width:64, height:64}},
-      {image:'img/cheese.png', size:{width:64, height:64}},
-      {image:'img/cheeseburger.png', size:{width:64, height:64}},
-      {image:'img/steak.png', size:{width:64, height:64}},
-      {image:'img/hairysteak.png', size:{width:64, height:64}},
-      {image:'img/cart.png', size:{width:64, height:64}}
+      {image:'img/boxes.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/pizza.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/Ham.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/cheese.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/cheeseburger.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/steak.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/hairysteak.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/cart.png', size:{width:64, height:64}, canShoot:false}
+    ],
+    powerups: [
+      {image:'img/milk.png', size:{width:64, height:64}, canShoot:false},
     ],
     bottleSpeed: -150,
     bottleSize: {width:64, height:64},

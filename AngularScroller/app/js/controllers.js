@@ -12,6 +12,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   .controller('GameCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources) {
     /* SCORE */
     $scope.score = 0;
+	$scope.numBottles = 5;
 
     /* FLOOR */
     $scope.floor = new Floor($scope.floorImage, { x: 0, y: 0 }, Resources.crawlSpeed);
@@ -56,8 +57,11 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.bottleImage = Resources.images.bottle;
 
     $scope.fireBottle = function(){
-      var bottle = new Bottle($scope.babyPosition, Resources.bottleSpeed);
-      $scope.bottles.push(bottle);
+	  if($scope.numBottles > 0) {
+		  var bottle = new Bottle($scope.babyPosition, Resources.bottleSpeed);
+		  $scope.bottles.push(bottle);
+		  $scope.numBottles--;
+	  }
     };
 
     /* OBSTACLES */
@@ -118,6 +122,7 @@ angular.module('myApp.controllers', ['myApp.services']).
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(deltaTime);
 
+          // check for bottles hitting obstacles
           Enumerable.From($scope.bottles).ForEach(function(bottle){
 
             if (AreColliding(bottle.position, Resources.bottleSize, obstacle.position, obstacle.size)){
@@ -127,7 +132,9 @@ angular.module('myApp.controllers', ['myApp.services']).
 
                 bottlesToRemove.push(bottleIndex);
               }
-              obstaclesToRemove.push($scope.obstacles.indexOf(obstacle));
+              if (obstacle.canShoot){
+                obstaclesToRemove.push($scope.obstacles.indexOf(obstacle));
+              }
             }
           });
           
@@ -183,7 +190,7 @@ angular.module('myApp.controllers', ['myApp.services']).
   		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
   	});
   	highScores.sort(sortHighScores);
-    $scope.highScores = highScores;
+    $scope.highScores = highScores.slice(0,10);
 	$scope.links = Resources.text.highScoreLinks;
 	$scope.highScoresPosition = Resources.gameScreenSize.height;
 	$scope.maxHighScoresPosition = 320;
@@ -254,7 +261,6 @@ function AreColliding(pos1, size1, pos2, size2){
            pos2.x + size2.width < pos1.x || 
            pos2.y > pos1.y + size1.height ||
            pos2.y + size2.height < pos1.y);
-  //return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 256;
 }
 
 function RandomItem(arr){
@@ -287,6 +293,7 @@ function Obstacle(obstacle, position, speed) {
   self.image = obstacle.image;
   self.size = obstacle.size;
   self.position = position;
+  self.canShoot = obstacle.canShoot;
   self.update = function(deltaTime){
     position.y += speed * deltaTime;
   };
@@ -323,8 +330,4 @@ function TrickleArray(source, destination, $scope, interval){
       }
     });
   }, interval);
-}
-
-function setRandomInterval(f, intervals){
-
 }
