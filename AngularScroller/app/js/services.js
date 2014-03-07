@@ -51,7 +51,6 @@ angular.module('myApp.services', []).
     obstacles:[
       {image:'img/boxes.png', size:{width:64, height:64}, canShoot:false},
       {image:'img/pizza.png', size:{width:64, height:64}, canShoot:true},
-      {image:'img/milk.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/Ham.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/cheese.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/cheeseburger.png', size:{width:64, height:64}, canShoot:true},
