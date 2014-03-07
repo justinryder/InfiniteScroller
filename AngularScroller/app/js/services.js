@@ -52,7 +52,12 @@ angular.module('myApp.services', []).
       {image:'img/boxes.png', size:{width:64, height:64}},
       {image:'img/pizza.png', size:{width:64, height:64}},
       {image:'img/milk.png', size:{width:64, height:64}},
-      {image:'img/Ham.png', size:{width:64, height:64}}
+      {image:'img/Ham.png', size:{width:64, height:64}},
+      {image:'img/boxes.png', size:{width:64, height:64}},
+      {image:'img/boxes.png', size:{width:64, height:64}},
+      {image:'img/boxes.png', size:{width:64, height:64}},
+      {image:'img/boxes.png', size:{width:64, height:64}},
+      {image:'img/boxes.png', size:{width:64, height:64}}
     ],
     bottleSpeed: -150,
     bottleSize: {width:64, height:64},
