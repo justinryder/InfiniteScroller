@@ -51,16 +51,17 @@ angular.module('myApp.services', []).
     obstacles:[
       {image:'img/boxes.png', size:{width:64, height:64}, canShoot:false},
       {image:'img/pizza.png', size:{width:64, height:64}, canShoot:true},
-      {image:'img/Ham.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/milk.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/Ham.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/cheese.png', size:{width:64, height:64}, canShoot:true},
-      {image:'img/cheeseburger.png', size:{width:64, height:64}, canShoot:false},
-      {image:'img/steak.png', size:{width:64, height:64}, canShoot:false},
-      {image:'img/hairysteak.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/cheeseburger.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/steak.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/hairysteak.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/cart.png', size:{width:64, height:64}, canShoot:false}
     ],
-	powerups: [
+    powerups: [
       {image:'img/milk.png', size:{width:64, height:64}, canShoot:false},
-	],
+    ],
     bottleSpeed: -150,
     bottleSize: {width:64, height:64},
     crawlSpeed:100,
