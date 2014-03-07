@@ -60,7 +60,7 @@ angular.module('myApp.controllers', ['myApp.services']).
         var obstacle = new Obstacle(
           resourceObstacle,
           {
-            x: (it * 64) + (Resources.floorLimit.min + 96),
+            x: (it * 64) + Resources.floorLimit.min + 64,
             y: -resourceObstacle.size.height
           },
           Resources.crawlSpeed
@@ -94,12 +94,13 @@ angular.module('myApp.controllers', ['myApp.services']).
     obstacleSpawnManager();
 
     /* UPDATE */
-    var updateInterval = setInterval(function(){
-      $scope.$apply(function(){
-        var deltaTime = Resources.gameSpeed / 1000;
+    var updateInterval = setInterval(function() {
+      $scope.$apply(function() {
+        var deltaTime = Resources.gameSpeed * 0.001;
 
         $scope.floor.update(deltaTime);
 
+        var obstaclesToRemove = [];
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(deltaTime);
           if (AreColliding(obstacle.position, obstacle.size, $scope.babyPosition, {width:$scope.babySize, height:$scope.babySize})){
@@ -111,9 +112,11 @@ angular.module('myApp.controllers', ['myApp.services']).
           }
 
           if (obstacle.position.y > Resources.gameScreenSize.height){
-            $scope.obstacles.splice($scope.obstacles.indexOf(obstacle), 1);
+            obstaclesToRemove.push($scope.obstacles.indexOf(obstacle));
           }
         });
+
+        obstaclesToRemove.forEach(function(index) { $scope.obstacles.splice(index, 1); })
 
         $scope.score += Resources.scoreSpeed;
       })
@@ -210,7 +213,7 @@ function RandomItem(arr){
 
 function Random(max, min){
   min = min || 0;
-  return Math.floor((Math.random()*max)+min);
+  return Math.floor((Math.random() * (max - min)) + min);
 }
 
 function Obstacle(obstacle, position, speed) {
