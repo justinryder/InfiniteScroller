@@ -48,6 +48,8 @@ angular.module('myApp.services', []).
     gameSpeed: 50,
     scoreSpeed: 1,
     obstacles:[
+      {image:'img/boxes.png', size:{width:64, height:64}},
+      {image:'img/pizza.png', size:{width:64, height:64}},
       {image:'img/milk.png', size:{width:64, height:64}},
       {image:'img/Ham.png', size:{width:64, height:64}}
     ],
