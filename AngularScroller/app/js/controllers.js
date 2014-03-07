@@ -122,6 +122,7 @@ angular.module('myApp.controllers', ['myApp.services']).
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(deltaTime);
 
+          // check for bottles hitting obstacles
           Enumerable.From($scope.bottles).ForEach(function(bottle){
 
             if (AreColliding(bottle.position, Resources.bottleSize, obstacle.position, obstacle.size)){
@@ -131,7 +132,9 @@ angular.module('myApp.controllers', ['myApp.services']).
 
                 bottlesToRemove.push(bottleIndex);
               }
-              obstaclesToRemove.push($scope.obstacles.indexOf(obstacle));
+              if (obstacle.canShoot){
+                obstaclesToRemove.push($scope.obstacles.indexOf(obstacle));
+              }
             }
           });
           
@@ -258,7 +261,6 @@ function AreColliding(pos1, size1, pos2, size2){
            pos2.x + size2.width < pos1.x || 
            pos2.y > pos1.y + size1.height ||
            pos2.y + size2.height < pos1.y);
-  //return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 256;
 }
 
 function RandomItem(arr){
@@ -291,6 +293,7 @@ function Obstacle(obstacle, position, speed) {
   self.image = obstacle.image;
   self.size = obstacle.size;
   self.position = position;
+  self.canShoot = obstacle.canShoot;
   self.update = function(deltaTime){
     position.y += speed * deltaTime;
   };
@@ -327,8 +330,4 @@ function TrickleArray(source, destination, $scope, interval){
       }
     });
   }, interval);
-}
-
-function setRandomInterval(f, intervals){
-
 }
