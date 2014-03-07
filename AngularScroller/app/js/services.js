@@ -52,11 +52,11 @@ angular.module('myApp.services', []).
       {image:'img/pizza.png', size:{width:64, height:64}},
       {image:'img/milk.png', size:{width:64, height:64}},
       {image:'img/Ham.png', size:{width:64, height:64}},
-      {image:'img/boxes.png', size:{width:64, height:64}},
-      {image:'img/boxes.png', size:{width:64, height:64}},
-      {image:'img/boxes.png', size:{width:64, height:64}},
-      {image:'img/boxes.png', size:{width:64, height:64}},
-      {image:'img/boxes.png', size:{width:64, height:64}}
+      {image:'img/cheese.png', size:{width:64, height:64}},
+      {image:'img/cart.png', size:{width:64, height:64}},
+      {image:'img/Steak.png', size:{width:64, height:64}},
+      {image:'img/HairySteak.png', size:{width:64, height:64}},
+      {image:'img/Cheeseburger.png', size:{width:64, height:64}}
     ],
     crawlSpeed:100,
     obstacleSpawnRates:[3000, 5500, 5000, 4500, 3500, 2000, 2500]
