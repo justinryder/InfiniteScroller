@@ -120,9 +120,12 @@ angular.module('myApp.controllers', ['myApp.services']).
 
           // check for bottles hitting obstacles
           Enumerable.From($scope.bottles).ForEach(function(bottle){
+
             if (AreColliding(bottle.position, Resources.bottleSize, obstacle.position, obstacle.size)){
+
               var bottleIndex = $scope.bottles.indexOf(bottle);
               if (!Enumerable.From(bottlesToRemove).Any(function(b){b == bottleIndex})){
+
                 bottlesToRemove.push(bottleIndex);
               }
               if (obstacle.canShoot){
@@ -163,6 +166,7 @@ angular.module('myApp.controllers', ['myApp.services']).
     }, Resources.gameSpeed);
 
     $scope.endGame = function(){
+      $scope.obstacles = [];
       clearInterval(updateInterval);
       clearInterval(babyImageInterval);
       clearTimeout(obstacleSpawnManagerInterval);
@@ -182,9 +186,19 @@ angular.module('myApp.controllers', ['myApp.services']).
   		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
   	});
   	highScores.sort(sortHighScores);
-    $scope.highScores = [];
+    $scope.highScores = highScores;
 	$scope.links = Resources.text.highScoreLinks;
-    TrickleArray(highScores, $scope.highScores, $scope);
+	$scope.highScoresPosition = Resources.gameScreenSize.height;
+	$scope.maxHighScoresPosition = 320;
+    var scrollingInterval = setInterval(function(){
+      $scope.$apply(function(){
+        var deltaTime = Resources.creditsInterval * 0.001;
+        $scope.highScoresPosition -= Resources.creditsScrollSpeed * deltaTime;
+        if ($scope.highScoresPosition < $scope.maxHighScoresPosition){
+          clearInterval(scrollingInterval);
+        }
+      });
+    }, Resources.creditsInterval);
   }])
 
   .controller('CreditsCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources){
