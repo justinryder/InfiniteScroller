@@ -119,9 +119,12 @@ angular.module('myApp.controllers', ['myApp.services']).
           obstacle.update(deltaTime);
 
           Enumerable.From($scope.bottles).ForEach(function(bottle){
+
             if (AreColliding(bottle.position, Resources.bottleSize, obstacle.position, obstacle.size)){
+
               var bottleIndex = $scope.bottles.indexOf(bottle);
               if (!Enumerable.From(bottlesToRemove).Any(function(b){b == bottleIndex})){
+
                 bottlesToRemove.push(bottleIndex);
               }
               obstaclesToRemove.push($scope.obstacles.indexOf(obstacle));
@@ -160,6 +163,7 @@ angular.module('myApp.controllers', ['myApp.services']).
     }, Resources.gameSpeed);
 
     $scope.endGame = function(){
+      $scope.obstacles = [];
       clearInterval(updateInterval);
       clearInterval(babyImageInterval);
       clearTimeout(obstacleSpawnManagerInterval);
