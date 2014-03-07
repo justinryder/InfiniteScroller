@@ -1,10 +1,10 @@
-<div class="game">
+<div class="game" ng-mousemove="babyPosition.x = moveBaby($event)">
   <div class="score">Score: {{score}}</div>
 	<div class="aisle" id="left"></div>
   <div class="obstacle" ng-repeat="obstacle in obstacles" style="left: {{obstacle.position.x}}px; top: {{obstacle.position.y}}px">
     <img ng-src="{{obstacle.image}}" ng-width="{{obstacle.size.width}}" ng-height="{{obstacle.size.height}}" />
   </div>
-	<div class="gamePlayArea" ng-mousemove="babyPosition.x = moveBaby($event)" ng-style="backgroundStyle()">
+	<div class="gamePlayArea" ng-style="backgroundStyle()">
 		<img ng-src="{{babyImage}}" ng-style="babyStyle()">
 	</div>
 	<div class="aisle" id="right"></div>

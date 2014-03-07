@@ -30,7 +30,7 @@ angular.module('myApp.services', []).
     creditsScrollSpeed: 50,
     creditsInterval: 50,
     babyAnimateSpeed: 200,
-    babySize: 128,
+    babySize: 64,
     gameScreenSize:{
       width:600,
       height:800
