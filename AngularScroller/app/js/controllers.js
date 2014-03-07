@@ -9,7 +9,7 @@ angular.module('myApp.controllers', ['myApp.services']).
     TrickleArray(Resources.text.menuLinks, $scope.links, $scope);
   }])
 
-  .controller('GameCtrl', ['$scope', '$document', 'Resources', function($scope, $document, Resources) {
+  .controller('GameCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources) {
     /* SCORE */
     $scope.score = 0;
 
@@ -102,7 +102,7 @@ angular.module('myApp.controllers', ['myApp.services']).
 
         Enumerable.From($scope.obstacles).ForEach(function(obstacle){
           obstacle.update(deltaTime);
-          if (AreColliding(obstacle.position, $scope.babyPosition)){
+          if (AreColliding(obstacle.position, obstacle.size, $scope.babyPosition, {width:$scope.babySize, height:$scope.babySize})){
             $scope.endGame();
           }
 
@@ -123,6 +123,7 @@ angular.module('myApp.controllers', ['myApp.services']).
       clearInterval(updateInterval);
       clearInterval(babyImageInterval);
       clearTimeout(obstacleSpawnManagerInterval);
+      $location.path('/highscores');
     };
   }])
 
@@ -134,20 +135,20 @@ angular.module('myApp.controllers', ['myApp.services']).
   		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
   	});
   	highScores.sort(sortHighScores);
-  	//$scope.highScores = highScores;
     $scope.highScores = [];
-	console.log(highScores);
-    TrickleArray(highScores, $scope.highScores, $scope)
+    console.log(highScores);
+    TrickleArray(highScores, $scope.highScores, $scope);
   }])
 
   .controller('CreditsCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources){
     $scope.credits = Resources.text.credits;
     $scope.creditsPosition = Resources.gameScreenSize.height;
-    setInterval(function(){
+    var scrollingInterval = setInterval(function(){
       $scope.$apply(function(){
         var deltaTime = Resources.creditsInterval / 1000;
         $scope.creditsPosition -= Resources.creditsScrollSpeed * deltaTime;
         if ($scope.creditsPosition < 0){
+          clearInterval(scrollingInterval);
           $location.path('/menu');
         }
       });
@@ -188,9 +189,13 @@ function sortNumber(a,b) {
 function sortHighScores(a,b) {
     return b.score - a.score;
 }
-  
-function AreColliding(pos1, pos2){
-  return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 256;
+
+function AreColliding(pos1, size1, pos2, size2){
+  return !(pos2.x > pos1.x + size1.width || 
+           pos2.x + size2.width < pos1.x || 
+           pos2.y > pos1.y + size1.height ||
+           pos2.y + size2.height < pos1.y);
+  //return Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2) < 256;
 }
 
 function RandomItem(arr){

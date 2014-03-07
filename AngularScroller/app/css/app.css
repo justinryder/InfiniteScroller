@@ -87,6 +87,13 @@ ul{
   cursor: none;
 }
 
+.score{
+  background: #bcd;
+  font-family: Arial;
+  font-size: 2em;
+  color: #fff;
+}
+
 .aisle {
   width: 12.5%;
   height: 100%;
