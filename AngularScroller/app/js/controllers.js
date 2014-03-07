@@ -37,10 +37,10 @@ angular.module('myApp.controllers', ['myApp.services']).
     $scope.babyImage = Resources.images.babies[0];
     $scope.babyPosition = {x:500,y:636};
     $scope.moveBaby = function($event) {
-        var minX = Resources.floorLimit.min;
-        var maxX = Resources.floorLimit.max;
-        return $event.pageX < minX ? minX : $event.pageX > maxX ? maxX : $event.pageX;
-      };
+      var minX = Resources.floorLimit.min;
+      var maxX = Resources.floorLimit.max;
+      return $event.pageX < minX ? minX : $event.pageX > maxX ? maxX : $event.pageX;
+    };
 
     var babyImageIndex = 0;
     var babyImageInterval = setInterval(function(){
@@ -92,7 +92,7 @@ angular.module('myApp.controllers', ['myApp.services']).
         obstacleSpawnManager();
       }, RandomItem(Resources.obstacleSpawnRates));
     }
-    // init the obstacle spawning random loop
+    // init the obstacle spawning random duration loop
     obstacleSpawnManager();
 
     /* UPDATE */
@@ -118,10 +118,10 @@ angular.module('myApp.controllers', ['myApp.services']).
     }, Resources.gameSpeed);
 
     $scope.endGame = function(){
-	  var highScores = getHighScores();
-	  var newScore = prompt("What's your name?") + ':' + $scope.score;
-	  var newcookieval = readCookie('bb_newScore') + "|" + newScore;
-	  createCookie('bb_newScore', newcookieval);
+  	  var highScores = getHighScores();
+  	  var newScore = prompt("What's your name?") + ':' + $scope.score;
+  	  var newcookieval = readCookie('bb_newScore') + "|" + newScore;
+  	  createCookie('bb_newScore', newcookieval);
       clearInterval(updateInterval);
       clearInterval(babyImageInterval);
       clearTimeout(obstacleSpawnManagerInterval);
@@ -130,22 +130,25 @@ angular.module('myApp.controllers', ['myApp.services']).
 
   .controller('HighScoresCtrl', ['$scope', function($scope){
     var cookie = readCookie('bb_newScore') || '';
-	var allScores = cookie.split('|');
-	var highScores = [];
-	allScores.forEach(function(scoreItem) {
-		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
-	});
-	highScores.sort(sortHighScores);
-	$scope.highScores = highScores;
+  	var allScores = cookie.split('|');
+  	var highScores = [];
+  	allScores.forEach(function(scoreItem) {
+  		highScores.push({name: scoreItem.split(':')[0], score: scoreItem.split(':')[1]});
+  	});
+  	highScores.sort(sortHighScores);
+  	$scope.highScores = highScores;
   }])
 
-  .controller('CreditsCtrl', ['$scope', 'Resources', function($scope, Resources){
+  .controller('CreditsCtrl', ['$scope', '$location', 'Resources', function($scope, $location, Resources){
     $scope.credits = Resources.text.credits;
     $scope.creditsPosition = Resources.gameScreenSize.height;
     setInterval(function(){
       $scope.$apply(function(){
         var deltaTime = Resources.creditsInterval / 1000;
         $scope.creditsPosition -= Resources.creditsScrollSpeed * deltaTime;
+        if ($scope.creditsPosition < 0){
+          $location.path('/menu');
+        }
       });
     }, Resources.creditsInterval);
   }]);
