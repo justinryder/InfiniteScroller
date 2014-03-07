@@ -1,4 +1,7 @@
 /* app css stylesheet */
+html {
+	background-color: black;
+}
 
 body{
   margin: 0;
@@ -125,3 +128,36 @@ ul{
 .colliding {
   border: 2px red solid;
 }
+
+/* HIGH SCORES */
+.high-scores {
+	background-color:black;
+	font-family: 'Press Start 2P', cursive;
+	color: white;
+}
+
+.high-scores h1 {
+  font-size: 5em;
+  border-top: 0.1em solid black;
+  border-bottom: 0.1em solid black;
+  margin: 1em 0;
+  z-index: 1;
+  text-align: center;
+}
+
+.high-scores ul {
+  text-align: center;
+  list-style: none;
+  font-size: 3em;
+  z-index: -1;
+  width:100%;
+}
+
+.high-scores li {
+  display: inline-block;
+  margin: auto;
+  width: 70%;
+  border-top: 0.1em solid black;
+  border-bottom: 0.1em solid black;
+}
+
