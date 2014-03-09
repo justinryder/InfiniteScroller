@@ -50,17 +50,17 @@ angular.module('myApp.services', []).
     scoreSpeed: 1,
     obstacles:[
       {image:'img/boxes.png', size:{width:64, height:64}, canShoot:false},
-      {image:'img/pizza.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/Pizza.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/Ham.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/cheese.png', size:{width:64, height:64}, canShoot:true},
-      {image:'img/cheeseburger.png', size:{width:64, height:64}, canShoot:true},
-      {image:'img/steak.png', size:{width:64, height:64}, canShoot:true},
-      {image:'img/hairysteak.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/Cheeseburger.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/Steak.png', size:{width:64, height:64}, canShoot:true},
+      {image:'img/HairySteak.png', size:{width:64, height:64}, canShoot:true},
       {image:'img/cart.png', size:{width:64, height:64}, canShoot:false},
-      {image:'img/blockershelf.png', size:{width:64, height:64}, canShoot:false},
-      {image:'img/blockershelf.png', size:{width:64, height:64}, canShoot:false},
-      {image:'img/blockershelf.png', size:{width:64, height:64}, canShoot:false},
-      {image:'img/blockershelf.png', size:{width:64, height:64}, canShoot:false}
+      {image:'img/Blockershelf.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/Blockershelf.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/Blockershelf.png', size:{width:64, height:64}, canShoot:false},
+      {image:'img/Blockershelf.png', size:{width:64, height:64}, canShoot:false}
     ],
     powerups: [
       {image:'img/milk.png', size:{width:64, height:64}, canShoot:false},

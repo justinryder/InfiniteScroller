@@ -106,13 +106,13 @@ ul{
 
 .aisle#left {
   float: left;
-  background-image: url(../img/shelfleft.png);
+  background-image: url(../img/ShelfLeft.png);
   background-repeat: repeat-y;
 }
 
 .aisle#right {
   float: right;
-  background: url(../img/shelfright.png) repeat;
+  background: url(../img/ShelfRight.png) repeat;
 }
 
 .gamePlayArea {
